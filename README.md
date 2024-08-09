@@ -18,6 +18,13 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 2. Run `:PlugInstall` to install the plugins.
 3. Restart Neovim.
 
+
+## LSP (Language Server Protocol)
+
+## Dependencies
+- [ripgrep](https://github.com/BurntSushi/ripgrep?tab=readme-ov-file#installation) - Required for Telescope live grep
+
+
 ## Github Copilot
 Setup [GitHub Copilot](https://github.com/github/copilot.vim) for Neovim.
 Run `:Copilot setup` to configure Copilot.

@@ -4,13 +4,19 @@ local Plug = vim.fn['plug#']
 ------------------------------------------
 -- General configuration
 ------------------------------------------
-vim.o.nu = true
 vim.o.encoding = "utf-8"
+vim.o.termguicolors = true
+vim.o.background = "dark"
+vim.o.wildmenu = true
+vim.o.wildmode = "longest:list,full"
+vim.o.wildignore = "*.o,*.obj,*~,*.pyc,__pycache__,*.swp,*.bak,*.pyc,*.class,*.DS_Store,*.git,*.hg,*.svn"
+vim.o.wrap = true
+vim.o.breakindent = true
+vim.o.title = true
 
 ------------------------------------------
 -- Text, tab and indent related
 ------------------------------------------
-
 vim.o.expandtab = true
 vim.o.smarttab = true
 
@@ -30,38 +36,43 @@ vim.o.smartcase = true
 vim.o.hlsearch = true
 vim.o.incsearch = true
 
+------------------------------------------
+--- Ruler, line number and cursor line
+------------------------------------------
+vim.o.ruler = true
+vim.o.number = true
+vim.o.cursorline = true
 
+-- Disable showcmd and showmode in status line (use lualine instead)
+vim.o.showcmd = false
+vim.o.showmode = false
+
+------------------------------------------
+--- Filetype detection
+------------------------------------------
 vim.cmd('filetype plugin indent on')
 
+
+------------------------------------------
+--- Plugins
+------------------------------------------
 vim.call('plug#begin')
 
 Plug('nvim-lua/plenary.nvim')
-
 Plug('nvim-tree/nvim-web-devicons')
 Plug('nvim-tree/nvim-tree.lua')
 Plug 'nvim-lualine/lualine.nvim'
 Plug('romgrk/barbar.nvim')
 Plug('navarasu/onedark.nvim')
 Plug('nvimdev/dashboard-nvim')
-
-Plug('nvim-telescope/telescope.nvim', { ['tag'] = '0.1.8' })
-
-Plug 'tpope/vim-fugitive'
-
 Plug('nvim-treesitter/nvim-treesitter', { ['do'] = 'TSUpdate' })
-
+Plug 'tpope/vim-fugitive'
+Plug('github/copilot.vim')
 Plug('folke/which-key.nvim')
 Plug('windwp/nvim-autopairs')
 Plug('numToStr/Comment.nvim')
-Plug('iamcco/markdown-preview.nvim', { ['do'] = 'cd app && npx --yes yarn install' })
-
--- NOTE: deps: https://github.com/BurntSushi/ripgrep?tab=readme-ov-file#installation
 Plug('nvim-telescope/telescope.nvim', { ['tag'] = '0.1.8' })
-
-Plug('github/copilot.vim')
-
--- TODOs
--- https://github.com/utilyre/barbecue.nvim
+Plug('iamcco/markdown-preview.nvim', { ['do'] = 'cd app && npx --yes yarn install' })
 
 vim.call('plug#end')
 
@@ -103,6 +114,9 @@ require('telescope').setup{
 require('dashboard').setup({
   theme = "hyper",
   config = {
+    week_header = {
+      enable = true,
+    },
     packages = { enable = false },
     project = { enable = false }
   }
