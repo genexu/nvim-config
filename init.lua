@@ -66,13 +66,31 @@ Plug('romgrk/barbar.nvim')
 Plug('navarasu/onedark.nvim')
 Plug('nvimdev/dashboard-nvim')
 Plug('nvim-treesitter/nvim-treesitter', { ['do'] = 'TSUpdate' })
-Plug 'tpope/vim-fugitive'
 Plug('github/copilot.vim')
-Plug('folke/which-key.nvim')
 Plug('windwp/nvim-autopairs')
 Plug('numToStr/Comment.nvim')
 Plug('nvim-telescope/telescope.nvim', { ['tag'] = '0.1.8' })
 Plug('iamcco/markdown-preview.nvim', { ['do'] = 'cd app && npx --yes yarn install' })
+
+Plug('karb94/neoscroll.nvim')
+
+Plug('tpope/vim-fugitive')
+Plug('lewis6991/gitsigns.nvim')
+
+Plug('williamboman/mason.nvim')
+Plug('williamboman/mason-lspconfig.nvim')
+Plug('neovim/nvim-lspconfig')
+Plug('hrsh7th/cmp-nvim-lsp')
+Plug('hrsh7th/cmp-buffer')
+Plug('hrsh7th/cmp-path')
+Plug('hrsh7th/cmp-cmdline')
+Plug('hrsh7th/nvim-cmp')
+
+Plug('hrsh7th/cmp-vsnip')
+Plug('hrsh7th/vim-vsnip')
+
+-- https://github.com/MunifTanjim/prettier.nvim
+-- https://github.com/utilyre/barbecue.nvim
 
 vim.call('plug#end')
 
@@ -87,8 +105,6 @@ local opts = { noremap = true, silent = true }
 -- Move to previous/next
 map('n', '<C-,>', '<Cmd>BufferPrevious<CR>', opts)
 map('n', '<C-.>', '<Cmd>BufferNext<CR>', opts)
--- Close buffer
-map('n', '<C-w>', '<Cmd>BufferClose<CR>', opts)
 -- Magic buffer-picking mode
 map('n', '<C-p>', '<Cmd>BufferPick<CR>', opts)
 -- Select Search
@@ -99,19 +115,113 @@ map('n', '<C-e>', 'y<ESC>:NvimTreeToggle<CR>', opts)
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-
 require("nvim-tree").setup()
 require('lualine').setup()
 require("nvim-autopairs").setup()
 require('Comment').setup()
-require('telescope').setup{ 
+require('gitsigns').setup()
+
+require("mason").setup()
+require("mason-lspconfig").setup {
+  ensure_installed = {
+    "tsserver",
+    "html",
+    "cssls",
+    "gopls",
+    "pyright",
+  },
+}
+
+local cmp = require('cmp')
+cmp.setup({
+  snippet = {
+    expand = function(args)
+      vim.fn["vsnip#anonymous"](args.body)
+    end,
+  },
+  mapping = {
+    ["<C-k>"] = cmp.mapping.select_prev_item(),
+    ["<C-j>"] = cmp.mapping.select_next_item(),
+    ['<C-e>'] = cmp.mapping.abort(),
+    ['<CR>'] = cmp.mapping.confirm({
+      behavior = cmp.ConfirmBehavior.Insert,
+      select = true,
+    }),
+  },
+  sources = {
+    { name = 'nvim_lsp' },
+    { name = 'vsnip' },
+  },
+})
+
+-- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline({ '/', '?' }, {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = {
+    { name = 'buffer' }
+  }
+})
+
+-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline(':', {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = cmp.config.sources({
+    { name = 'path' }
+  }, {
+    { name = 'cmdline' }
+  }),
+  matching = { disallow_symbol_nonprefix_matching = false }
+})
+
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+--
+local lsp = require('lspconfig')
+lsp.gopls.setup {
+  capabilities = capabilities,
+}
+lsp.pyright.setup {
+  capabilities = capabilities,
+}
+lsp.tsserver.setup {
+  filetypes = { "typescript", "typescriptreact", "typescript.tsx", "javascript", "javascriptreact", "javascript.tsx" },
+  root_dir = lsp.util.root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git"),
+  capabilities = capabilities,
+}
+lsp.html.setup {
+  capabilities = capabilities,
+}
+lsp.cssls.setup {
+  capabilities = capabilities,
+}
+
+require('nvim-treesitter.configs').setup {
+  ensure_installed = {
+    "typescript",
+    "javascript",
+    "tsx",
+    "go",
+    "python",
+    "html",
+    "css",
+    "json",
+    "yaml",
+    "lua",
+  },
+  highlight = {
+    enable = true,
+  }
+}
+
+
+require('telescope').setup { 
   defaults = { 
     file_ignore_patterns = { 
       "node_modules" 
     }
   }
 }
-require('dashboard').setup({
+
+require('dashboard').setup {
   theme = "hyper",
   config = {
     week_header = {
@@ -120,6 +230,20 @@ require('dashboard').setup({
     packages = { enable = false },
     project = { enable = false }
   }
+}
+
+require('neoscroll').setup({
+  mappings = {                 -- Keys to be mapped to their corresponding default scrolling animation
+    '<C-u>', '<C-d>',
+  },
+  hide_cursor = true,          -- Hide cursor while scrolling
+  stop_eof = true,             -- Stop at <EOF> when scrolling downwards
+  respect_scrolloff = false,   -- Stop scrolling when the cursor reaches the scrolloff margin of the file
+  cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
+  easing = 'linear',           -- Default easing function
+  pre_hook = nil,              -- Function to run before the scrolling animation starts
+  post_hook = nil,             -- Function to run after the scrolling animation ends
+  performance_mode = false,    -- Disable "Performance Mode" on all buffers.
 })
 
 require('onedark').load()
