@@ -80,6 +80,10 @@ Plug('lewis6991/gitsigns.nvim')
 Plug('williamboman/mason.nvim')
 Plug('williamboman/mason-lspconfig.nvim')
 Plug('neovim/nvim-lspconfig')
+
+Plug('SmiteshP/nvim-navic')
+Plug('utilyre/barbecue.nvim')
+
 Plug('hrsh7th/cmp-nvim-lsp')
 Plug('hrsh7th/cmp-buffer')
 Plug('hrsh7th/cmp-path')
@@ -120,6 +124,7 @@ require('lualine').setup()
 require("nvim-autopairs").setup()
 require('Comment').setup()
 require('gitsigns').setup()
+require('barbecue').setup()
 
 require("mason").setup()
 require("mason-lspconfig").setup {
@@ -129,6 +134,7 @@ require("mason-lspconfig").setup {
     "cssls",
     "gopls",
     "pyright",
+    "lua_ls"
   },
 }
 
@@ -174,25 +180,48 @@ cmp.setup.cmdline(':', {
 })
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+local navic = require("nvim-navic")
+local on_attach = function(client, bufnr)
+  navic.attach(client, bufnr)
+end
+
 --
 local lsp = require('lspconfig')
 lsp.gopls.setup {
   capabilities = capabilities,
+  on_attach = on_attach,
 }
 lsp.pyright.setup {
   capabilities = capabilities,
+  on_attach = on_attach,
 }
 lsp.tsserver.setup {
   filetypes = { "typescript", "typescriptreact", "typescript.tsx", "javascript", "javascriptreact", "javascript.tsx" },
   root_dir = lsp.util.root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git"),
   capabilities = capabilities,
+  on_attach = on_attach,
 }
 lsp.html.setup {
   capabilities = capabilities,
+  on_attach = on_attach,
 }
 lsp.cssls.setup {
   capabilities = capabilities,
+  on_attach = on_attach,
 }
+lsp.lua_ls.setup{
+  capabilities = capabilities,
+  on_attach = on_attach,
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { "vim" }
+      }
+    }
+  }
+}
+
 
 require('nvim-treesitter.configs').setup {
   ensure_installed = {
@@ -213,10 +242,10 @@ require('nvim-treesitter.configs').setup {
 }
 
 
-require('telescope').setup { 
-  defaults = { 
-    file_ignore_patterns = { 
-      "node_modules" 
+require('telescope').setup {
+  defaults = {
+    file_ignore_patterns = {
+      "node_modules"
     }
   }
 }
