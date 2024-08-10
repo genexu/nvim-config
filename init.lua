@@ -106,9 +106,12 @@ Plug('rcarriga/nvim-notify')
 
 Plug('folke/todo-comments.nvim')
 
--- https://github.com/MunifTanjim/prettier.nvim
+Plug('dense-analysis/ale')
 
 vim.call('plug#end')
+
+vim.g.ale_fixers = {'prettier', 'eslint'}
+vim.g.ale_fix_on_save = false
 
 vim.notify = require("notify")
 
@@ -129,6 +132,8 @@ map('n', '<C-p>', '<Cmd>BufferPick<CR>', opts)
 map('v', '<C-f>', 'y<ESC>:Telescope live_grep default_text=<c-r>0<CR>', opts)
 -- NvimTreeToggle
 map('n', '<C-e>', 'y<ESC>:NvimTreeToggle<CR>', opts)
+-- ALEFix
+map('n', '<leader>p', '<Cmd>ALEFix<CR>', opts)
 
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
