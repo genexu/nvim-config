@@ -47,6 +47,15 @@ vim.o.cursorline = true
 vim.o.showcmd = false
 vim.o.showmode = false
 
+
+------------------------------------------
+--- Backup and swap files
+------------------------------------------
+-- Disable backup and swap files for better performance
+vim.o.backup = false
+vim.o.writebackup = false
+vim.o.swapfile = false
+
 ------------------------------------------
 --- Filetype detection
 ------------------------------------------
@@ -69,7 +78,7 @@ Plug('nvim-treesitter/nvim-treesitter', { ['do'] = 'TSUpdate' })
 Plug('github/copilot.vim')
 Plug('windwp/nvim-autopairs')
 Plug('numToStr/Comment.nvim')
-Plug('nvim-telescope/telescope.nvim', { ['tag'] = '0.1.8' })
+Plug('nvim-telescope/telescope.nvim', { ['tag'] = '0.1.8', ['frozen'] = true })
 Plug('iamcco/markdown-preview.nvim', { ['do'] = 'cd app && npx --yes yarn install' })
 
 Plug('karb94/neoscroll.nvim')
@@ -93,10 +102,13 @@ Plug('hrsh7th/nvim-cmp')
 Plug('hrsh7th/cmp-vsnip')
 Plug('hrsh7th/vim-vsnip')
 
+Plug('rcarriga/nvim-notify')
+
 -- https://github.com/MunifTanjim/prettier.nvim
--- https://github.com/utilyre/barbecue.nvim
 
 vim.call('plug#end')
+
+vim.notify = require("notify")
 
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
