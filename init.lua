@@ -104,6 +104,8 @@ Plug('hrsh7th/vim-vsnip')
 
 Plug('rcarriga/nvim-notify')
 
+Plug('folke/todo-comments.nvim')
+
 -- https://github.com/MunifTanjim/prettier.nvim
 
 vim.call('plug#end')
@@ -137,6 +139,7 @@ require("nvim-autopairs").setup()
 require('Comment').setup()
 require('gitsigns').setup()
 require('barbecue').setup()
+require('todo-comments').setup()
 
 require("mason").setup()
 require("mason-lspconfig").setup {
