@@ -38,7 +38,7 @@ Plug('tpope/vim-fugitive')
 Plug('lewis6991/gitsigns.nvim')
 Plug('github/copilot.vim')
 
------ Languages & Highlight -----
+----- Languages & Syntax -----
 Plug('nvim-treesitter/nvim-treesitter', { ['do'] = 'TSUpdate' })
 Plug('windwp/nvim-autopairs')
 Plug('numToStr/Comment.nvim')
