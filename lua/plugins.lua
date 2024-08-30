@@ -48,7 +48,6 @@ Plug('dense-analysis/ale')
 Plug('karb94/neoscroll.nvim')
 Plug('rcarriga/nvim-notify')
 Plug('folke/todo-comments.nvim')
-Plug('iamcco/markdown-preview.nvim', { ['do'] = 'cd app && npx --yes yarn install' })
 
 vim.call('plug#end')
 

@@ -108,4 +108,3 @@ Utilities
 - [neoscroll.nvim](https://github.com/karb94/neoscroll.nvim)
 - [nvim-notify](https://github.com/rcarriga/nvim-notify)
 - [todo-comments.nvim](https://github.com/folke/todo-comments.nvim)
-- [markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim)
