@@ -36,6 +36,11 @@ if cmp_nvim_lsp then
   capabilities = cmp_nvim_lsp.default_capabilities()
 end
 
+capabilities.textDocument.foldingRange = {
+  dynamicRegistration = false,
+  lineFoldingOnly = true,
+}
+
 local on_attach = function(client, bufnr)
   if navic then
     navic.attach(client, bufnr)

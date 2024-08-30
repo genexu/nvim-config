@@ -42,6 +42,15 @@ opt.autoindent = true
 opt.smartindent = true
 
 ------------------------------------------
+--- Folding
+------------------------------------------
+opt.foldenable = true
+opt.foldlevel = 99
+opt.foldlevelstart = 99
+opt.foldcolumn = '1'
+opt.fillchars = [[eob: ,fold: ,foldopen:-,foldsep: ,foldclose:+]]
+
+------------------------------------------
 -- Searching case configuration
 ------------------------------------------
 opt.ignorecase = true
@@ -59,7 +68,6 @@ opt.cursorline = true
 -- Disable showcmd and showmode in status line (use lualine instead)
 opt.showcmd = false
 opt.showmode = false
-
 
 ------------------------------------------
 --- Backup and swap files
