@@ -21,3 +21,5 @@ map('n', '<leader>nc', '<Cmd>NvimTreeCollapse<CR>', opts)
 
 -- ALE
 map('n', '<leader>p', '<Cmd>ALEFix<CR>', opts)
+
+map('n', '<leader>e', '<Cmd>lua vim.diagnostic.open_float()<CR>', opts)
