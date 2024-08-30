@@ -22,6 +22,11 @@ treesitter_config.setup {
     "json",
     "yaml",
     "lua",
+    "vim",
+    "regex",
+    "bash",
+    "markdown",
+    "markdown_inline",
   },
   highlight = {
     enable = true,

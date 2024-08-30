@@ -7,6 +7,7 @@ Plug('nvim-lua/plenary.nvim')
 Plug('nvim-tree/nvim-web-devicons')
 
 ----- UI & Themes -----
+Plug('MunifTanjim/nui.nvim')
 Plug('nvimdev/dashboard-nvim')
 Plug 'nvim-lualine/lualine.nvim'
 Plug('navarasu/onedark.nvim')
@@ -47,6 +48,7 @@ Plug('dense-analysis/ale')
 ----- Utilities -----
 Plug('karb94/neoscroll.nvim')
 Plug('rcarriga/nvim-notify')
+Plug('folke/noice.nvim')
 Plug('folke/todo-comments.nvim')
 
 vim.call('plug#end')
@@ -59,6 +61,7 @@ require('plugins.gitsigns')
 require('plugins.lsp')
 require('plugins.lualine')
 require('plugins.neoscroll')
+require('plugins.noice')
 require('plugins.nvim-cmp')
 require('plugins.nvim-autopairs')
 require('plugins.nvim-notify')
