@@ -48,7 +48,7 @@ Plug('dense-analysis/ale')
 ----- Utilities -----
 Plug('karb94/neoscroll.nvim')
 Plug('rcarriga/nvim-notify')
-Plug('folke/noice.nvim')
+Plug('folke/noice.nvim', { ['tag'] = 'v4.4.7', ['frozen'] = true })
 Plug('folke/todo-comments.nvim')
 
 vim.call('plug#end')
