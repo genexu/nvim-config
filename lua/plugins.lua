@@ -17,6 +17,9 @@ Plug('utilyre/barbecue.nvim')
 Plug('romgrk/barbar.nvim')
 
 ----- Navigation -----
+Plug('junegunn/fzf', { ['do'] = function() vim.fn['fzf#install']() end })
+Plug('junegunn/fzf.vim')
+Plug('nvim-telescope/telescope-fzf-native.nvim', { ['do'] = 'make' })
 Plug('nvim-telescope/telescope.nvim', { ['tag'] = '0.1.8', ['frozen'] = true })
 
 ----- LSP -----
