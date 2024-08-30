@@ -22,4 +22,7 @@ map('n', '<leader>nc', '<Cmd>NvimTreeCollapse<CR>', opts)
 -- ALE
 map('n', '<leader>p', '<Cmd>ALEFix<CR>', opts)
 
+-- Diagnostic
+map('n', '<leader>xx', '<Cmd>Trouble diagnostics toggle<CR>', opts)
+map('n', '<leader>xX', '<Cmd>Trouble diagnostics toggle filter.buf=0<CR>', opts)
 map('n', '<leader>e', '<Cmd>lua vim.diagnostic.open_float()<CR>', opts)

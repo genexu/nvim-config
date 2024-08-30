@@ -53,6 +53,7 @@ Plug('karb94/neoscroll.nvim')
 Plug('rcarriga/nvim-notify')
 Plug('folke/noice.nvim', { ['tag'] = 'v4.4.7', ['frozen'] = true })
 Plug('folke/todo-comments.nvim')
+Plug('folke/trouble.nvim')
 
 vim.call('plug#end')
 
@@ -73,3 +74,4 @@ require('plugins.nvim-treesitter')
 require('plugins.onedark')
 require('plugins.telescope')
 require('plugins.todo-comments')
+require('plugins.trouble')
