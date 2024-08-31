@@ -4,6 +4,34 @@ if not status_ok then
   return
 end
 
+local cmp_kinds = {
+  Text = '  ',
+  Method = '  ',
+  Function = '  ',
+  Constructor = '  ',
+  Field = '  ',
+  Variable = '  ',
+  Class = '  ',
+  Interface = '  ',
+  Module = '  ',
+  Property = '  ',
+  Unit = '  ',
+  Value = '  ',
+  Enum = '  ',
+  Keyword = '  ',
+  Snippet = '  ',
+  Color = '  ',
+  File = '  ',
+  Reference = '  ',
+  Folder = '  ',
+  EnumMember = '  ',
+  Constant = '  ',
+  Struct = '  ',
+  Event = '  ',
+  Operator = '  ',
+  TypeParameter = '  ',
+}
+
 cmp.setup({
   snippet = {
     expand = function(args)
@@ -22,6 +50,14 @@ cmp.setup({
   sources = {
     { name = 'nvim_lsp' },
     { name = 'vsnip' },
+  },
+  formatting = {
+    fields = { "abbr", "kind" },
+    format = function(_, vim_item)
+      local kind = cmp_kinds[vim_item.kind] or ""
+      vim_item.kind = kind .. vim_item.kind
+      return vim_item
+    end,
   },
 })
 
