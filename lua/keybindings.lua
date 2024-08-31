@@ -22,11 +22,6 @@ map('n', '<leader>nc', '<Cmd>NvimTreeCollapse<CR>', opts)
 -- ALE
 map('n', '<leader>p', '<Cmd>ALEFix<CR>', opts)
 
--- Folding
-local ufo = require('ufo')
-map('n', 'zR', ufo.openAllFolds, opts)
-map('n', 'zM', ufo.closeAllFolds, opts)
-
 -- Diagnostic
 map('n', '<leader>xx', '<Cmd>Trouble diagnostics toggle<CR>', opts)
 map('n', '<leader>xX', '<Cmd>Trouble diagnostics toggle filter.buf=0<CR>', opts)

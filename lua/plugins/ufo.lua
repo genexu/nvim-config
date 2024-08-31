@@ -5,3 +5,9 @@ if not status_ok then
 end
 
 ufo.setup()
+
+local map = vim.keymap.set
+local opts = { noremap = true, silent = true }
+
+map('n', 'zR', ufo.openAllFolds, opts)
+map('n', 'zM', ufo.closeAllFolds, opts)
