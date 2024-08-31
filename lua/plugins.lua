@@ -7,7 +7,6 @@ Plug('nvim-lua/plenary.nvim')
 Plug('nvim-tree/nvim-web-devicons')
 
 ----- UI & Themes -----
-Plug('MunifTanjim/nui.nvim')
 Plug('nvimdev/dashboard-nvim')
 Plug 'nvim-lualine/lualine.nvim'
 Plug('navarasu/onedark.nvim')
@@ -51,7 +50,6 @@ Plug('dense-analysis/ale')
 ----- Utilities -----
 Plug('karb94/neoscroll.nvim')
 Plug('rcarriga/nvim-notify')
-Plug('folke/noice.nvim', { ['tag'] = 'v4.4.7', ['frozen'] = true })
 Plug('folke/todo-comments.nvim')
 Plug('folke/trouble.nvim')
 Plug('kevinhwang91/promise-async')
@@ -68,7 +66,6 @@ require('plugins.gitsigns')
 require('plugins.lsp')
 require('plugins.lualine')
 require('plugins.neoscroll')
-require('plugins.noice')
 require('plugins.nvim-cmp')
 require('plugins.nvim-autopairs')
 require('plugins.nvim-notify')
