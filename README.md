@@ -28,23 +28,28 @@ ln -s $PWD/lua ~/.config/nvim/lua
 
 
 ## Keybindings
-----------------------------------------------------
-| Keybinding       | Description                   |
-|------------------|-------------------------------|
-| `[n] <leader>`   | `\`                           |
-| `[n] <leader>ff` | Telescope find files          |
-| `[n] <leader>fg` | Telescope live grep           |
-| `[n] <leader>fb` | Telescope buffers             |
-| `[n] <leader>fh` | Telescope help tags           |
-| `[v] C-f`        | Telescope live grep selection |
-| `[n] C-,`        | Buffer previous               |
-| `[n] C-.`        | Buffer next                   |
-| `[n] C-p`        | Buffer pick                   |
-| `[n] C-e`        | NvimTree toggle               |
-| `[n] <leader>nf` | NvimTree find file            |
-| `[n] <leader>nc` | NvimTree collapse             |
-| `[n] <leader>p`  | ALT fix                       |
-----------------------------------------------------
+---------------------------------------------------------------
+| Keybinding       | Description                              |
+|------------------|------------------------------------------|
+| `[n] <leader>`   | `\`                                      |
+| `[n] <leader>ff` | Telescope find files                     |
+| `[n] <leader>fg` | Telescope live grep                      |
+| `[n] <leader>fb` | Telescope buffers                        |
+| `[n] <leader>fh` | Telescope help tags                      |
+| `[v] C-f`        | Telescope live grep selection            |
+| `[n] C-,`        | Buffer previous                          |
+| `[n] C-.`        | Buffer next                              |
+| `[n] C-p`        | Buffer pick                              |
+| `[n] C-e`        | NvimTree toggle                          |
+| `[n] <leader>nf` | NvimTree find file                       |
+| `[n] <leader>nc` | NvimTree collapse                        |
+| `[n] <leader>p`  | ALT fix                                  |
+| `[n] <leader>e`  | Open diagnostics                         |
+| `[n] <leader>xx` | Trouble diagnostics toggle               |
+| `[n] <leader>xX` | Trouble diagnostics toggle filter.buf=0  |
+| `[n] <leader>zR` | UFO Open all folds                       |
+| `[n] <leader>zM` | UFO Close all folds                      |
+---------------------------------------------------------------
 
 ## Github Copilot Support
 [copilot.vim](https://github.com/github/copilot.vim)
@@ -76,6 +81,9 @@ UI & Themes
 - [barbar.nvim](https://github.com/romgrk/barbar.nvim)
 
 Navigation
+- [fzf](https://github.com/junegunn/fzf)
+- [fzf.vim](https://github.com/junegunn/fzf.vim)
+- [telescope-fzf-native.nvim](https://github.com/nvim-telescope/telescope-fzf-native.nvim)
 - [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
 
 LSP
@@ -108,3 +116,7 @@ Utilities
 - [neoscroll.nvim](https://github.com/karb94/neoscroll.nvim)
 - [nvim-notify](https://github.com/rcarriga/nvim-notify)
 - [todo-comments.nvim](https://github.com/folke/todo-comments.nvim)
+- [trouble.nvim](https://github.com/folke/trouble.nvim)
+- [promise-async](https://github.com/kevinhwang91/promise-async)
+- [nvim-ufo](https://github.com/kevinhwang91/nvim-ufo)
+- [statuscol.nvim](https://github.com/luukvbaal/statuscol.nvim)
