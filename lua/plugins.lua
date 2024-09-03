@@ -9,11 +9,11 @@ Plug('nvim-tree/nvim-web-devicons')
 ----- UI & Themes -----
 Plug('nvimdev/dashboard-nvim')
 Plug 'nvim-lualine/lualine.nvim'
-Plug('navarasu/onedark.nvim')
 Plug('nvim-tree/nvim-tree.lua')
 Plug('SmiteshP/nvim-navic')
 Plug('utilyre/barbecue.nvim')
 Plug('romgrk/barbar.nvim')
+Plug('folke/tokyonight.nvim')
 
 ----- Navigation -----
 Plug('junegunn/fzf', { ['do'] = function() vim.fn['fzf#install']() end })
@@ -59,7 +59,7 @@ Plug('luukvbaal/statuscol.nvim')
 
 vim.call('plug#end')
 
-require('onedark').load()
+vim.cmd[[colorscheme tokyonight-moon]]
 
 require('barbecue').setup()
 require('Comment').setup()

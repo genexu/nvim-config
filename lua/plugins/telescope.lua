@@ -8,7 +8,8 @@ telescope.setup {
   defaults = {
     file_ignore_patterns = {
       "node_modules",
-      "yarn.lock"
+      "yarn.lock",
+      "package-lock.json"
     }
   },
   pickers = {

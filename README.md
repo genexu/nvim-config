@@ -120,3 +120,13 @@ Utilities
 - [promise-async](https://github.com/kevinhwang91/promise-async)
 - [nvim-ufo](https://github.com/kevinhwang91/nvim-ufo)
 - [statuscol.nvim](https://github.com/luukvbaal/statuscol.nvim)
+
+## Other
+### Terminal
+[wezterm](https://wezfurlong.org/wezterm/index.html)
+
+We use wezterm with the Tokyo Night Moon color scheme. To use the color scheme, add the following to the `wezterm` configuration file. For more information, see the [wezterm configuration documentation](https://wezfurlong.org/wezterm/config/files.html).
+
+```lua
+config.color_scheme = 'Tokyo Night Moon'
+```
