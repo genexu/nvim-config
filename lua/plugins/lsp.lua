@@ -16,7 +16,7 @@ if mason and mason_lspconfig then
   mason.setup()
   mason_lspconfig.setup {
     ensure_installed = {
-      "tsserver",
+      "ts_ls",
       "html",
       "cssls",
       "gopls",
@@ -50,7 +50,7 @@ end
 local servers = {
   gopls = {},
   pyright = {},
-  tsserver = {
+  ts_ls = {
     filetypes = { "typescript", "typescriptreact", "typescript.tsx", "javascript", "javascriptreact", "javascript.tsx" },
     root_dir = lsp.util.root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git"),
   },
