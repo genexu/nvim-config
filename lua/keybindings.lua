@@ -8,6 +8,7 @@ map('n', '<leader>fg', builtin.live_grep, {})
 map('n', '<leader>fb', builtin.buffers, {})
 map('n', '<leader>fh', builtin.help_tags, {})
 map('v', '<C-f>', 'y<ESC>:Telescope live_grep default_text=<c-r>0<CR>', opts)
+map('n', '<C-r>', '<Cmd>Telescope resume<CR>', opts)
 
 -- Buffer navigation
 map('n', '<C-,>', '<Cmd>BufferPrevious<CR>', opts)
