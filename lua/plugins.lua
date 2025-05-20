@@ -14,6 +14,8 @@ Plug('SmiteshP/nvim-navic')
 Plug('utilyre/barbecue.nvim')
 Plug('romgrk/barbar.nvim')
 Plug('folke/tokyonight.nvim')
+Plug('stevearc/dressing.nvim')
+Plug('MunifTanjim/nui.nvim')
 
 ----- Navigation -----
 Plug('junegunn/fzf', { ['do'] = function() vim.fn['fzf#install']() end })
@@ -39,7 +41,6 @@ Plug('hrsh7th/vim-vsnip-integ')
 ----- Git Integration -----
 Plug('tpope/vim-fugitive')
 Plug('lewis6991/gitsigns.nvim')
-Plug('github/copilot.vim')
 
 ----- Languages & Syntax -----
 Plug('nvim-treesitter/nvim-treesitter', { ['do'] = 'TSUpdate' })
@@ -55,7 +56,13 @@ Plug('folke/trouble.nvim')
 Plug('kevinhwang91/promise-async')
 Plug('kevinhwang91/nvim-ufo')
 Plug('luukvbaal/statuscol.nvim')
+Plug('MeanderingProgrammer/render-markdown.nvim')
 -- Plug('dstein64/vim-startuptime')
+
+----- AI -----
+Plug('yetone/avante.nvim', { ['branch'] = 'main', ['do'] = 'make' })
+Plug('ravitemer/mcphub.nvim', { ['do'] = 'npm install -g mcp-hub@latest' })
+Plug('github/copilot.vim')
 
 vim.call('plug#end')
 
@@ -80,3 +87,5 @@ require('plugins.nvim-treesitter')
 require('plugins.statuscol')
 require('plugins.telescope')
 require('plugins.ufo')
+require('plugins.mcphub')
+require('plugins.avante')

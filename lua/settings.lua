@@ -26,6 +26,7 @@ opt.wildignore = "*.o,*.obj,*~,*.pyc,__pycache__,*.swp,*.bak,*.pyc,*.class,*.DS_
 opt.wrap = true
 opt.breakindent = true
 opt.title = true
+opt.laststatus = 3
 
 ------------------------------------------
 -- Text, tab and indent related
