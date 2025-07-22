@@ -3,18 +3,13 @@
 ![preview](./assets/preview.png)
 
 ## Requirements
-- [Neovim](https://neovim.io/)
-- [vim-plug](https://github.com/junegunn/vim-plug)
+- [Neovim](https://neovim.io/) (v0.8+)
 - [ripgrep](https://github.com/BurntSushi/ripgrep) - Required for Telescope live grep
 - [fd](https://github.com/sharkdp/fd) - (Optional) Faster alternative to `find` for Telescope
 - [nerd-fonts](https://github.com/ryanoasis/nerd-fonts) - Required for icons in NvimTree
 
 ## Plugin Manager
-This configuration uses vim-plug as the plugin manager. To install vim-plug, run the following command:
-```sh
-sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-```
+This configuration uses [lazy.nvim](https://github.com/folke/lazy.nvim) as the plugin manager. Lazy.nvim will be automatically installed on first startup.
 
 ## Installation
 1. Clone this repository. 
@@ -23,8 +18,8 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 ln -s $PWD/init.lua ~/.config/nvim/init.lua
 ln -s $PWD/lua ~/.config/nvim/lua
 ```
-3. Run `:PlugInstall` to install the plugins.
-4. Restart Neovim.
+3. Start Neovim - lazy.nvim will automatically bootstrap and install all plugins.
+4. Optionally run `:Lazy` to open the plugin manager interface.
 
 
 ## Keybindings
@@ -64,10 +59,10 @@ AI plugins are currently commented out in the configuration:
 - **MCPHub**: Model Context Protocol server integration for enhanced AI capabilities
 
 To enable these plugins:
-1. Uncomment the plugin lines in `lua/plugins.lua`
-2. Uncomment the require statements at the bottom of `lua/plugins.lua`
-3. Configure the endpoint and model in `lua/plugins/avante.lua`
-4. Run `:PlugInstall` to install
+1. Uncomment the plugin specs in `lua/plugins.lua`
+2. Create corresponding config files in `lua/configs/` if needed
+3. Configure the endpoint and model settings for Avante
+4. Restart Neovim - lazy.nvim will automatically install the plugins
 
 ## LSP (Language Server Protocol)
 
@@ -100,8 +95,7 @@ LSP servers are automatically installed and configured through Mason. For more s
 - [nui.nvim](https://github.com/MunifTanjim/nui.nvim) - UI components
 
 ### Navigation
-- [fzf](https://github.com/junegunn/fzf) - Fuzzy finder
-- [fzf.vim](https://github.com/junegunn/fzf.vim) - Vim integration for fzf
+- [fzf-lua](https://github.com/ibhagwan/fzf-lua) - Lua fzf integration
 - [telescope-fzf-native.nvim](https://github.com/nvim-telescope/telescope-fzf-native.nvim) - Native fzf for Telescope
 - [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) - Fuzzy finder and picker
 
@@ -137,7 +131,7 @@ LSP servers are automatically installed and configured through Mason. For more s
 - [promise-async](https://github.com/kevinhwang91/promise-async) - Async utilities
 - [nvim-ufo](https://github.com/kevinhwang91/nvim-ufo) - Folding enhancement
 - [statuscol.nvim](https://github.com/luukvbaal/statuscol.nvim) - Status column
-- [render-markdown.nvim](https://github.com/MeanderingProgrammer/render-markdown.nvim) - Markdown rendering
+- [vim-startuptime](https://github.com/dstein64/vim-startuptime) - Startup time profiling
 
 ### AI (Optional)
 - [github/copilot.vim](https://github.com/github/copilot.vim) - GitHub Copilot
@@ -148,18 +142,17 @@ LSP servers are automatically installed and configured through Mason. For more s
 
 ```
 nvim-config/
-├── init.lua              # Entry point, loads all modules
+├── init.lua              # Entry point, bootstraps lazy.nvim and loads modules
 ├── lua/
 │   ├── globals.lua       # Global variables and aliases
 │   ├── settings.lua      # Neovim settings and options
 │   ├── keybindings.lua   # Custom keybindings
-│   ├── plugins.lua       # Plugin definitions with vim-plug
-│   └── plugins/          # Individual plugin configurations
-│       ├── avante.lua
+│   ├── plugins.lua       # Plugin definitions with lazy.nvim
+│   └── configs/          # Individual plugin configurations
 │       ├── conform.lua
 │       ├── dashboard-nvim.lua
+│       ├── lazy.lua
 │       ├── lsp.lua
-│       ├── mcphub.lua
 │       ├── neoscroll.lua
 │       ├── nvim-cmp.lua
 │       ├── nvim-lint.lua

@@ -4,28 +4,38 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Configuration Structure
 
-This is a Neovim configuration using vim-plug as the plugin manager with a modular Lua structure:
+This is a Neovim configuration using lazy.nvim as the plugin manager with a modular Lua structure:
 
-- `init.lua` - Entry point that sets leader key and loads modules
-- `lua/plugins.lua` - Main plugin definitions and vim-plug configuration
+- `init.lua` - Entry point that sets leader key, bootstraps lazy.nvim, and loads modules
+- `lua/configs/lazy.lua` - Lazy.nvim bootstrap configuration
+- `lua/plugins.lua` - Main plugin definitions and lazy.nvim specifications
 - `lua/settings.lua` - General Neovim settings and options
 - `lua/keybindings.lua` - Custom keybindings and mappings
 - `lua/globals.lua` - Global variables and aliases
-- `lua/plugins/` - Individual plugin configurations
+- `lua/configs/` - Individual plugin configurations
 
 ## Installation Commands
 
 After making changes to plugin configurations:
 ```bash
 # Install new plugins
-nvim +PlugInstall +qall
+nvim --headless "+Lazy! sync" +qa
 
-# Update existing plugins
-nvim +PlugUpdate +qall
+# Update existing plugins  
+nvim --headless "+Lazy! update" +qa
 
 # Clean unused plugins
-nvim +PlugClean +qall
+nvim --headless "+Lazy! clean" +qa
+
+# Check plugin status
+nvim --headless "+Lazy! check" +qa
 ```
+
+Or interactively within Neovim:
+- `:Lazy` - Open lazy.nvim UI
+- `:Lazy sync` - Install missing and update plugins
+- `:Lazy update` - Update plugins
+- `:Lazy clean` - Remove unused plugins
 
 ## Key Keybindings
 
@@ -39,10 +49,11 @@ nvim +PlugClean +qall
 ## Common Development Patterns
 
 When adding new plugins:
-1. Add to appropriate category in `lua/plugins.lua`
-2. Create individual config file in `lua/plugins/` if needed
-3. Require the config file at the bottom of `lua/plugins.lua`
-4. Use `pcall(require, "plugin_name")` for safe loading
+1. Add plugin spec to appropriate category in `lua/plugins.lua`
+2. Create individual config file in `lua/configs/` if needed
+3. Use `config = function() require("configs.plugin_name") end` in plugin spec
+4. Utilize lazy.nvim features like `event`, `cmd`, `ft`, `keys` for lazy loading
+5. Use `dependencies` to specify plugin dependencies
 
 When modifying keybindings:
 - Use `vim.keymap.set` with proper options
@@ -52,16 +63,16 @@ When modifying keybindings:
 ## AI Plugin Configuration
 
 AI plugins (Avante, MCPHub) are currently commented out in the configuration:
-- To enable: uncomment the plugin lines in `lua/plugins.lua` and their require statements
-- Avante config in `lua/plugins/avante.lua` uses placeholder values that need customization
-- Update endpoint and model name in avante.lua before enabling
+- To enable: uncomment the plugin specs in `lua/plugins.lua`
+- Create corresponding config files in `lua/configs/` if needed
+- Avante requires placeholder values to be customized for endpoints and models
 
 ## Formatting & Linting
 
 With nvim-lint + conform.nvim:
 - **conform.nvim** - Code formatting (manual with `<leader>p`)
 - **nvim-lint** - Auto-linting on save/edit with external tools
-- Configs: `lua/plugins/conform.lua` and `lua/plugins/nvim-lint.lua`
+- Configs: `lua/configs/conform.lua` and `lua/configs/nvim-lint.lua`
 
 ## Dependencies
 

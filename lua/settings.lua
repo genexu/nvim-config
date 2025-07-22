@@ -7,7 +7,6 @@ require('globals')
 local disabled_built_ins = {
   'tutor',
   'man',
-  'netrw',
   'netrwPlugin',
 }
 for _, plugin in pairs(disabled_built_ins) do

@@ -1,93 +1,230 @@
-local Plug = vim.fn['plug#']
+return {
+  -- Core
+  { "nvim-lua/plenary.nvim" },
+  { "nvim-tree/nvim-web-devicons" },
 
-vim.call('plug#begin')
+  ----- UI & Themes -----
+  {
+    "nvimdev/dashboard-nvim",
+    event = 'VimEnter',
+    config = function()
+      require("configs.dashboard-nvim")
+    end,
+    dependencies = {
+      'nvim-tree/nvim-web-devicons'
+    }
+  },
+  {
+    'nvim-lualine/lualine.nvim',
+    dependencies = {
+      'nvim-tree/nvim-web-devicons'
+    },
+    config = function()
+      require("lualine").setup()
+    end,
+  },
+  {
+    "nvim-tree/nvim-tree.lua",
+    config = function()
+      require("configs.nvim-tree")
+    end,
+  },
+  {
+    "SmiteshP/nvim-navic",
+    dependencies = {
+      'neovim/nvim-lspconfig'
+    },
+  },
+  {
+    "utilyre/barbecue.nvim",
+    name = "barbecue",
+    version = "*",
+    dependencies = {
+      "SmiteshP/nvim-navic",
+      "nvim-tree/nvim-web-devicons", -- optional dependency
+    },
+    config = function()
+      require("barbecue").setup({
+        attach_navic = true,
+      })
+    end,
+  },
+  {
+    'romgrk/barbar.nvim',
+    dependencies = {
+      'lewis6991/gitsigns.nvim',     -- OPTIONAL: for git status
+      'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
+    },
+  },
+  {
+    "folke/tokyonight.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.cmd [[colorscheme tokyonight-moon]]
+    end,
+  },
+  {
+    "stevearc/dressing.nvim",
+  },
+  {
+    "MunifTanjim/nui.nvim"
+  },
 
------ Core -----
-Plug('nvim-lua/plenary.nvim')
-Plug('nvim-tree/nvim-web-devicons')
-
------ UI & Themes -----
-Plug('nvimdev/dashboard-nvim')
-Plug 'nvim-lualine/lualine.nvim'
-Plug('nvim-tree/nvim-tree.lua')
-Plug('SmiteshP/nvim-navic')
-Plug('utilyre/barbecue.nvim')
-Plug('romgrk/barbar.nvim')
-Plug('folke/tokyonight.nvim')
-Plug('stevearc/dressing.nvim')
-Plug('MunifTanjim/nui.nvim')
-
------ Navigation -----
-Plug('junegunn/fzf', { ['do'] = function() vim.fn['fzf#install']() end })
-Plug('junegunn/fzf.vim')
-Plug('nvim-telescope/telescope-fzf-native.nvim', { ['do'] = 'make' })
-Plug('nvim-telescope/telescope.nvim', { ['tag'] = '0.1.8', ['frozen'] = true })
-
------ LSP -----
-Plug('williamboman/mason.nvim')
-Plug('williamboman/mason-lspconfig.nvim')
-Plug('neovim/nvim-lspconfig')
-
------ Completions -----
-Plug('hrsh7th/nvim-cmp')
-Plug('hrsh7th/cmp-nvim-lsp')
-Plug('hrsh7th/cmp-buffer')
-Plug('hrsh7th/cmp-path')
-Plug('hrsh7th/cmp-cmdline')
-Plug('hrsh7th/cmp-vsnip')
-Plug('hrsh7th/vim-vsnip')
-Plug('hrsh7th/vim-vsnip-integ')
-
------ Git Integration -----
-Plug('tpope/vim-fugitive')
-Plug('lewis6991/gitsigns.nvim')
-
------ Languages & Syntax -----
-Plug('nvim-treesitter/nvim-treesitter', { ['do'] = 'TSUpdate' })
-Plug('windwp/nvim-autopairs')
-Plug('numToStr/Comment.nvim')
-Plug('mfussenegger/nvim-lint')
-Plug('stevearc/conform.nvim')
-
------ Utilities -----
-Plug('karb94/neoscroll.nvim')
-Plug('rcarriga/nvim-notify')
-Plug('folke/todo-comments.nvim')
-Plug('folke/trouble.nvim')
-Plug('kevinhwang91/promise-async')
-Plug('kevinhwang91/nvim-ufo')
-Plug('luukvbaal/statuscol.nvim')
-Plug('MeanderingProgrammer/render-markdown.nvim')
--- Plug('dstein64/vim-startuptime')
-
------ AI -----
--- Plug('yetone/avante.nvim', { ['branch'] = 'main', ['do'] = 'make' })
--- Plug('ravitemer/mcphub.nvim', { ['do'] = 'npm install -g mcp-hub@latest' })
-Plug('github/copilot.vim')
-
-vim.call('plug#end')
-
-vim.cmd[[colorscheme tokyonight-moon]]
-
-require('barbecue').setup()
-require('Comment').setup()
-require('gitsigns').setup()
-require('lualine').setup()
-require('nvim-autopairs').setup()
-require('notify').setup()
-require('todo-comments').setup()
-require('trouble').setup()
-
-require('plugins.conform')
-require('plugins.nvim-lint')
-require('plugins.dashboard-nvim')
-require('plugins.lsp')
-require('plugins.neoscroll')
-require('plugins.nvim-cmp')
-require('plugins.nvim-tree')
-require('plugins.nvim-treesitter')
-require('plugins.statuscol')
-require('plugins.telescope')
-require('plugins.ufo')
--- require('plugins.mcphub')
--- require('plugins.avante')
+  ----- Navigation -----
+  {
+    "ibhagwan/fzf-lua",
+    -- optional for icon support
+    dependencies = {
+      "nvim-tree/nvim-web-devicons"
+    }
+  },
+  {
+    'nvim-telescope/telescope-fzf-native.nvim',
+    build = 'make'
+  },
+  {
+    'nvim-telescope/telescope.nvim',
+    tag = '0.1.8',
+    dependencies = {
+      'nvim-lua/plenary.nvim'
+    },
+    config = function()
+      require("configs.telescope")
+    end,
+  },
+  ----- LSP -----
+  { "neovim/nvim-lspconfig" },
+  {
+    "williamboman/mason.nvim",
+    config = function()
+      require("configs.lsp")
+    end,
+  },
+  {
+    "williamboman/mason-lspconfig.nvim",
+    dependencies = {
+      "mason-org/mason.nvim",
+      "neovim/nvim-lspconfig",
+    },
+  },
+  ----- Completions -----
+  {
+    "hrsh7th/nvim-cmp",
+    dependencies = {
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
+      "hrsh7th/cmp-cmdline",
+      "hrsh7th/cmp-vsnip",
+      "hrsh7th/vim-vsnip",
+      "hrsh7th/vim-vsnip-integ",
+    },
+    config = function()
+      require("configs.nvim-cmp")
+    end,
+  },
+  ----- Git Integration -----
+  {
+    "tpope/vim-fugitive",
+  },
+  {
+    "lewis6991/gitsigns.nvim",
+    config = function()
+      require("gitsigns").setup()
+    end,
+  },
+  ----- Languages & Syntax -----
+  {
+    "nvim-treesitter/nvim-treesitter",
+    branch = 'master',
+    lazy = false,
+    build = ":TSUpdate",
+    config = function()
+      require("configs.nvim-treesitter")
+    end,
+  },
+  {
+    'windwp/nvim-autopairs',
+    event = "InsertEnter",
+    config = function()
+      require("nvim-autopairs").setup()
+    end,
+  },
+  {
+    "numToStr/Comment.nvim",
+    config = function()
+      require("Comment").setup()
+    end,
+  },
+  {
+    "mfussenegger/nvim-lint",
+    config = function()
+      require("configs.nvim-lint")
+    end,
+  },
+  {
+    "stevearc/conform.nvim",
+    config = function()
+      require("configs.conform")
+    end,
+  },
+  ----- Utilities -----
+  {
+    "karb94/neoscroll.nvim",
+    config = function()
+      require("configs.neoscroll")
+    end,
+  },
+  {
+    "rcarriga/nvim-notify",
+    config = function()
+      require("notify").setup()
+    end,
+  },
+  {
+    "folke/todo-comments.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim"
+    },
+    config = function()
+      require("todo-comments").setup()
+    end,
+  },
+  {
+    "folke/trouble.nvim",
+    config = function()
+      require("trouble").setup()
+    end,
+  },
+  {
+    'kevinhwang91/nvim-ufo',
+    dependencies = {
+      "kevinhwang91/promise-async"
+    },
+    config = function()
+      require("configs.ufo")
+    end
+  },
+  {
+    "luukvbaal/statuscol.nvim",
+    config = function()
+      require("configs.statuscol")
+    end,
+  },
+  {
+    "dstein64/vim-startuptime",
+    -- lazy-load on a command
+    cmd = "StartupTime",
+    -- init is called during startup. Configuration for vim plugins typically should be set in an init function
+    init = function()
+      vim.g.startuptime_tries = 10
+    end,
+  },
+  ----- AI -----
+  {
+    "github/copilot.vim"
+  }
+  -- Plug('yetone/avante.nvim', { ['branch'] = 'main', ['do'] = 'make' })
+  -- Plug('ravitemer/mcphub.nvim', { ['do'] = 'npm install -g mcp-hub@latest' })
+}
