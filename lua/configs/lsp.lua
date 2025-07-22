@@ -23,7 +23,7 @@ if mason and mason_lspconfig then
       "pyright",
       "lua_ls"
     },
-    automatic_enable = true,
+    automatic_enable = false,
   }
 end
 
@@ -75,15 +75,22 @@ for server, config in pairs(servers) do
   lsp[server].setup(config)
 end
 
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+-- Configure diagnostics display with deduplication
+vim.diagnostic.config({
   underline = true,
   virtual_text = false,
-  signs = true,
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = "󰅚 ",
+      [vim.diagnostic.severity.WARN] = "󰀪 ",
+      [vim.diagnostic.severity.HINT] = "󰌶 ",
+      [vim.diagnostic.severity.INFO] = " ",
+    },
+  },
   update_in_insert = true,
+  severity_sort = true,
+  float = {
+    border = "rounded",
+    source = "always",
+  },
 })
-
-local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = " " }
-for type, icon in pairs(signs) do
-  local hl = "DiagnosticSign" .. type
-  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-end
