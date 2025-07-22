@@ -69,10 +69,11 @@ AI plugins (Avante, MCPHub) are currently commented out in the configuration:
 
 ## Formatting & Linting
 
-With nvim-lint + conform.nvim:
+With nvim-lint + conform.nvim + mason-nvim-lint:
 - **conform.nvim** - Code formatting (manual with `<leader>p`)
 - **nvim-lint** - Auto-linting on save/edit with external tools
-- Configs: `lua/configs/conform.lua` and `lua/configs/nvim-lint.lua`
+- **mason-nvim-lint** - Auto-install linters through Mason
+- Configs: `lua/configs/conform.lua`, `lua/configs/nvim-lint.lua`, and `lua/configs/mason-nvim-lint.lua`
 
 ## Dependencies
 
@@ -82,4 +83,4 @@ Required external tools:
 - nerd-fonts (for icons)
 - Language servers managed by Mason
 - Formatters: prettier/prettierd, black, stylua, shfmt, etc.
-- Linters: eslint, flake8, shellcheck, markdownlint, etc.
+- Linters: automatically installed via mason-nvim-lint (eslint_d, flake8, shellcheck, markdownlint, etc.)

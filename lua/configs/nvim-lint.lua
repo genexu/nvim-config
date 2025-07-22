@@ -7,10 +7,10 @@ end
 -- Configure linters by filetype
 lint.linters_by_ft = {
   -- JavaScript/TypeScript
-  javascript = { "eslint" },
-  javascriptreact = { "eslint" },
-  typescript = { "eslint" },
-  typescriptreact = { "eslint" },
+  javascript = { "eslint_d" },
+  javascriptreact = { "eslint_d" },
+  typescript = { "eslint_d" },
+  typescriptreact = { "eslint_d" },
 
   -- Python
   python = { "flake8", "mypy" },

@@ -132,6 +132,16 @@ return {
     end,
   },
   {
+    "rshkarin/mason-nvim-lint",
+    dependencies = {
+      "williamboman/mason.nvim",
+      "mfussenegger/nvim-lint",
+    },
+    config = function()
+      require("configs.mason-nvim-lint")
+    end,
+  },
+  {
     "stevearc/conform.nvim",
     config = function()
       require("configs.conform")

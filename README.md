@@ -116,6 +116,7 @@ LSP servers are automatically installed and configured through Mason. For more s
 - [nvim-autopairs](https://github.com/windwp/nvim-autopairs) - Auto-close brackets
 - [Comment.nvim](https://github.com/numToStr/Comment.nvim) - Commenting utility
 - [nvim-lint](https://github.com/mfussenegger/nvim-lint) - Auto-linting with external tools
+- [mason-nvim-lint](https://github.com/rshkarin/mason-nvim-lint) - Auto-install linters through Mason
 - [conform.nvim](https://github.com/stevearc/conform.nvim) - Code formatting
 
 ### Utilities
@@ -151,6 +152,7 @@ nvim-config/
 │       ├── neoscroll.lua
 │       ├── nvim-cmp.lua
 │       ├── nvim-lint.lua
+│       ├── mason-nvim-lint.lua
 │       ├── nvim-tree.lua
 │       ├── nvim-treesitter.lua
 │       ├── statuscol.lua
