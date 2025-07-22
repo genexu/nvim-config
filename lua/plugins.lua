@@ -30,26 +30,6 @@ return {
     end,
   },
   {
-    "SmiteshP/nvim-navic",
-    dependencies = {
-      'neovim/nvim-lspconfig'
-    },
-  },
-  {
-    "utilyre/barbecue.nvim",
-    name = "barbecue",
-    version = "*",
-    dependencies = {
-      "SmiteshP/nvim-navic",
-      "nvim-tree/nvim-web-devicons", -- optional dependency
-    },
-    config = function()
-      require("barbecue").setup({
-        attach_navic = true,
-      })
-    end,
-  },
-  {
     'romgrk/barbar.nvim',
     dependencies = {
       'lewis6991/gitsigns.nvim',     -- OPTIONAL: for git status
