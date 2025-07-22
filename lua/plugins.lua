@@ -59,22 +59,10 @@ return {
       "nvim-tree/nvim-web-devicons"
     }
   },
-  {
-    'nvim-telescope/telescope-fzf-native.nvim',
-    build = 'make'
-  },
-  {
-    'nvim-telescope/telescope.nvim',
-    tag = '0.1.8',
-    dependencies = {
-      'nvim-lua/plenary.nvim'
-    },
-    config = function()
-      require("configs.telescope")
-    end,
-  },
   ----- LSP -----
-  { "neovim/nvim-lspconfig" },
+  {
+    "neovim/nvim-lspconfig"
+  },
   {
     "williamboman/mason.nvim",
     config = function()

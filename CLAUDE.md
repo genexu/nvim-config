@@ -40,7 +40,7 @@ Or interactively within Neovim:
 ## Key Keybindings
 
 - Leader key: `\`
-- Telescope: `<leader>ff` (find files), `<leader>fg` (live grep), `<leader>fb` (buffers)
+- FzfLua: `<leader>ff` (find files), `<leader>fg` (live grep), `<leader>fb` (buffers)
 - Buffer navigation: `<C-,>` (previous), `<C-.>` (next), `<C-p>` (pick)
 - File tree: `<C-e>` (toggle), `<leader>nf` (find file)
 - Diagnostics: `<leader>xx` (Trouble toggle), `<leader>e` (open float)
@@ -77,7 +77,7 @@ With nvim-lint + conform.nvim:
 ## Dependencies
 
 Required external tools:
-- ripgrep (for Telescope live grep)
+- ripgrep (for FzfLua live grep)
 - fd (optional, for faster file finding)
 - nerd-fonts (for icons)
 - Language servers managed by Mason

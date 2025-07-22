@@ -4,8 +4,8 @@
 
 ## Requirements
 - [Neovim](https://neovim.io/) (v0.8+)
-- [ripgrep](https://github.com/BurntSushi/ripgrep) - Required for Telescope live grep
-- [fd](https://github.com/sharkdp/fd) - (Optional) Faster alternative to `find` for Telescope
+- [ripgrep](https://github.com/BurntSushi/ripgrep) - Required for FzfLua live grep
+- [fd](https://github.com/sharkdp/fd) - (Optional) Faster alternative to `find` for FzfLua
 - [nerd-fonts](https://github.com/ryanoasis/nerd-fonts) - Required for icons in NvimTree
 
 ## Plugin Manager
@@ -27,12 +27,11 @@ ln -s $PWD/lua ~/.config/nvim/lua
 | Keybinding       | Description                              |
 |------------------|------------------------------------------|
 | `[n] <leader>`   | `\`                                      |
-| `[n] <leader>ff` | Telescope find files                     |
-| `[n] <leader>fg` | Telescope live grep                      |
-| `[n] <leader>fb` | Telescope buffers                        |
-| `[n] <leader>fh` | Telescope help tags                      |
-| `[v] <C-f>`      | Telescope live grep selection            |
-| `[n] <C-r>`      | Telescope resume                         |
+| `[n] <leader>ff` | FzfLua find files                        |
+| `[n] <leader>fg` | FzfLua live grep                         |
+| `[n] <leader>fb` | FzfLua buffers                           |
+| `[v] <C-f>`      | FzfLua live grep selection               |
+| `[n] <C-r>`      | FzfLua resume                            |
 | `[n] <C-,>`      | Buffer previous                          |
 | `[n] <C-.>`      | Buffer next                              |
 | `[n] <C-p>`      | Buffer pick                              |
@@ -88,16 +87,12 @@ LSP servers are automatically installed and configured through Mason. For more s
 - [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) - Status line
 - [tokyonight.nvim](https://github.com/folke/tokyonight.nvim) - Tokyo Night color scheme
 - [nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua) - File explorer
-- [nvim-navic](https://github.com/SmiteshP/nvim-navic) - Breadcrumb navigation
-- [barbecue.nvim](https://github.com/utilyre/barbecue.nvim) - Winbar breadcrumbs
 - [barbar.nvim](https://github.com/romgrk/barbar.nvim) - Buffer tabs
 - [dressing.nvim](https://github.com/stevearc/dressing.nvim) - UI improvements
 - [nui.nvim](https://github.com/MunifTanjim/nui.nvim) - UI components
 
 ### Navigation
 - [fzf-lua](https://github.com/ibhagwan/fzf-lua) - Lua fzf integration
-- [telescope-fzf-native.nvim](https://github.com/nvim-telescope/telescope-fzf-native.nvim) - Native fzf for Telescope
-- [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) - Fuzzy finder and picker
 
 ### LSP & Completion
 - [mason.nvim](https://github.com/williamboman/mason.nvim) - LSP server manager
@@ -159,7 +154,6 @@ nvim-config/
 │       ├── nvim-tree.lua
 │       ├── nvim-treesitter.lua
 │       ├── statuscol.lua
-│       ├── telescope.lua
 │       └── ufo.lua
 └── assets/
     └── preview.png
