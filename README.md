@@ -28,7 +28,7 @@ ln -s $PWD/lua ~/.config/nvim/lua
 
 
 ## Keybindings
----------------------------------------------------------------
+
 | Keybinding       | Description                              |
 |------------------|------------------------------------------|
 | `[n] <leader>`   | `\`                                      |
@@ -36,97 +36,146 @@ ln -s $PWD/lua ~/.config/nvim/lua
 | `[n] <leader>fg` | Telescope live grep                      |
 | `[n] <leader>fb` | Telescope buffers                        |
 | `[n] <leader>fh` | Telescope help tags                      |
-| `[v] C-f`        | Telescope live grep selection            |
-| `[n] C-,`        | Buffer previous                          |
-| `[n] C-.`        | Buffer next                              |
-| `[n] C-p`        | Buffer pick                              |
-| `[n] C-e`        | NvimTree toggle                          |
+| `[v] <C-f>`      | Telescope live grep selection            |
+| `[n] <C-r>`      | Telescope resume                         |
+| `[n] <C-,>`      | Buffer previous                          |
+| `[n] <C-.>`      | Buffer next                              |
+| `[n] <C-p>`      | Buffer pick                              |
+| `[n] <C-e>`      | NvimTree toggle                          |
 | `[n] <leader>nf` | NvimTree find file                       |
 | `[n] <leader>nc` | NvimTree collapse                        |
-| `[n] <leader>p`  | ALT fix                                  |
-| `[n] <leader>e`  | Open diagnostics                         |
+| `[n] <leader>p`  | ALE fix                                  |
+| `[n] <leader>e`  | Open diagnostics float                   |
 | `[n] <leader>xx` | Trouble diagnostics toggle               |
-| `[n] <leader>xX` | Trouble diagnostics toggle filter.buf=0  |
+| `[n] <leader>xX` | Trouble diagnostics toggle (current buf) |
 | `[n] <leader>zR` | UFO Open all folds                       |
 | `[n] <leader>zM` | UFO Close all folds                      |
----------------------------------------------------------------
 
-## Github Copilot Support
+## AI Integration
+
+### GitHub Copilot
 [copilot.vim](https://github.com/github/copilot.vim)
 
 Run `:Copilot setup` to configure Copilot.
 
-## LSP (Language Server Protocol)
-[nvim-lspconfig/blob/master/doc/server_configurations.md](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md)
+### Avante & MCPHub (Optional)
+AI plugins are currently commented out in the configuration:
+- **Avante**: AI coding assistant with Claude/OpenAI integration
+- **MCPHub**: Model Context Protocol server integration for enhanced AI capabilities
 
-- [tsserver](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#tsserver)
-- [pyright](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md)
-- [gopls](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#gopls)
-- [lua_ls](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#lua_ls)
-- [html](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#html)
-- [cssls](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#cssls)
+To enable these plugins:
+1. Uncomment the plugin lines in `lua/plugins.lua`
+2. Uncomment the require statements at the bottom of `lua/plugins.lua`
+3. Configure the endpoint and model in `lua/plugins/avante.lua`
+4. Run `:PlugInstall` to install
+
+## LSP (Language Server Protocol)
+
+This configuration uses [Mason](https://github.com/williamboman/mason.nvim) for automatic LSP server management. Configured language servers include:
+
+- **TypeScript/JavaScript**: `ts_ls` (formerly tsserver)
+- **Python**: `pyright`
+- **Go**: `gopls`
+- **Lua**: `lua_ls`
+- **HTML**: `html`
+- **CSS**: `cssls`
+
+LSP servers are automatically installed and configured through Mason. For more server configurations, see the [nvim-lspconfig documentation](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md).
 
 ## Plugins
-Core
-- [plenary.nvim](https://github.com/nvim-lua/plenary.nvim)
-- [nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons)
 
-UI & Themes
-- [dashboard-nvim](https://github.com/nvimdev/dashboard-nvim)
-- [lualine](https://github.com/nvim-lualine/lualine.nvim)
-- [onedark](https://github.com/navarasu/onedark.nvim)
-- [nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua)
-- [nvim-navic](https://github.com/SmiteshP/nvim-navic)
-- [barbecue.nvim](https://github.com/utilyre/barbecue.nvim)
-- [barbar.nvim](https://github.com/romgrk/barbar.nvim)
+### Core
+- [plenary.nvim](https://github.com/nvim-lua/plenary.nvim) - Lua utility functions
+- [nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons) - File type icons
 
-Navigation
-- [fzf](https://github.com/junegunn/fzf)
-- [fzf.vim](https://github.com/junegunn/fzf.vim)
-- [telescope-fzf-native.nvim](https://github.com/nvim-telescope/telescope-fzf-native.nvim)
-- [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
+### UI & Themes
+- [dashboard-nvim](https://github.com/nvimdev/dashboard-nvim) - Startup dashboard
+- [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) - Status line
+- [tokyonight.nvim](https://github.com/folke/tokyonight.nvim) - Tokyo Night color scheme
+- [nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua) - File explorer
+- [nvim-navic](https://github.com/SmiteshP/nvim-navic) - Breadcrumb navigation
+- [barbecue.nvim](https://github.com/utilyre/barbecue.nvim) - Winbar breadcrumbs
+- [barbar.nvim](https://github.com/romgrk/barbar.nvim) - Buffer tabs
+- [dressing.nvim](https://github.com/stevearc/dressing.nvim) - UI improvements
+- [nui.nvim](https://github.com/MunifTanjim/nui.nvim) - UI components
 
-LSP
-- [mason.nvim](https://github.com/williamboman/mason.nvim)
-- [mason-lspconfig.nvim](https://github.com/williamboman/mason-lspconfig.nvim)
-- [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
+### Navigation
+- [fzf](https://github.com/junegunn/fzf) - Fuzzy finder
+- [fzf.vim](https://github.com/junegunn/fzf.vim) - Vim integration for fzf
+- [telescope-fzf-native.nvim](https://github.com/nvim-telescope/telescope-fzf-native.nvim) - Native fzf for Telescope
+- [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) - Fuzzy finder and picker
 
-Completion
-- [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
-- [cmp-nvim-lsp](https://github.com/hrsh7th/cmp-nvim-lsp)
-- [cmp-buffer](https://github.com/hrsh7th/cmp-buffer)
-- [cmp-path](https://github.com/hrsh7th/cmp-path)
-- [cmp-cmdline](https://github.com/hrsh7th/cmp-cmdline)
-- [cmp-vsnip](https://github.com/hrsh7th/cmp-vsnip)
-- [vim-vsnip](https://github.com/hrsh7th/vim-vsnip)
-- [vim-vsnip-integ](https://github.com/hrsh7th/vim-vsnip-integ)
+### LSP & Completion
+- [mason.nvim](https://github.com/williamboman/mason.nvim) - LSP server manager
+- [mason-lspconfig.nvim](https://github.com/williamboman/mason-lspconfig.nvim) - Mason integration
+- [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) - LSP configurations
+- [nvim-cmp](https://github.com/hrsh7th/nvim-cmp) - Completion engine
+- [cmp-nvim-lsp](https://github.com/hrsh7th/cmp-nvim-lsp) - LSP completion source
+- [cmp-buffer](https://github.com/hrsh7th/cmp-buffer) - Buffer completion
+- [cmp-path](https://github.com/hrsh7th/cmp-path) - Path completion
+- [cmp-cmdline](https://github.com/hrsh7th/cmp-cmdline) - Command line completion
+- [cmp-vsnip](https://github.com/hrsh7th/cmp-vsnip) - Snippet completion
+- [vim-vsnip](https://github.com/hrsh7th/vim-vsnip) - Snippet engine
+- [vim-vsnip-integ](https://github.com/hrsh7th/vim-vsnip-integ) - Snippet integration
 
-Git Integration
-- [vim-fugitive](https://github.com/tpope/vim-fugitive)
-- [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
-- [copilot.vim](https://github.com/github/copilot.vim)
+### Git Integration
+- [vim-fugitive](https://github.com/tpope/vim-fugitive) - Git commands
+- [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim) - Git signs in gutter
 
-Language & Syntax
-- [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
-- [nvim-autopairs](https://github.com/windwp/nvim-autopairs)
-- [Comment.nvim](https://github.com/numToStr/Comment.nvim)
-- [ale](https://github.com/dense-analysis/ale)
+### Language & Syntax
+- [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) - Syntax highlighting
+- [nvim-autopairs](https://github.com/windwp/nvim-autopairs) - Auto-close brackets
+- [Comment.nvim](https://github.com/numToStr/Comment.nvim) - Commenting utility
+- [ale](https://github.com/dense-analysis/ale) - Linting and fixing
 
-Utilities
-- [neoscroll.nvim](https://github.com/karb94/neoscroll.nvim)
-- [nvim-notify](https://github.com/rcarriga/nvim-notify)
-- [todo-comments.nvim](https://github.com/folke/todo-comments.nvim)
-- [trouble.nvim](https://github.com/folke/trouble.nvim)
-- [promise-async](https://github.com/kevinhwang91/promise-async)
-- [nvim-ufo](https://github.com/kevinhwang91/nvim-ufo)
-- [statuscol.nvim](https://github.com/luukvbaal/statuscol.nvim)
+### Utilities
+- [neoscroll.nvim](https://github.com/karb94/neoscroll.nvim) - Smooth scrolling
+- [nvim-notify](https://github.com/rcarriga/nvim-notify) - Notification system
+- [todo-comments.nvim](https://github.com/folke/todo-comments.nvim) - TODO highlighting
+- [trouble.nvim](https://github.com/folke/trouble.nvim) - Diagnostics panel
+- [promise-async](https://github.com/kevinhwang91/promise-async) - Async utilities
+- [nvim-ufo](https://github.com/kevinhwang91/nvim-ufo) - Folding enhancement
+- [statuscol.nvim](https://github.com/luukvbaal/statuscol.nvim) - Status column
+- [render-markdown.nvim](https://github.com/MeanderingProgrammer/render-markdown.nvim) - Markdown rendering
 
-## Other
-### Terminal
-[wezterm](https://wezfurlong.org/wezterm/index.html)
+### AI (Optional)
+- [github/copilot.vim](https://github.com/github/copilot.vim) - GitHub Copilot
+- [yetone/avante.nvim](https://github.com/yetone/avante.nvim) - AI coding assistant *(commented out)*
+- [ravitemer/mcphub.nvim](https://github.com/ravitemer/mcphub.nvim) - MCP integration *(commented out)*
 
-We use wezterm with the Tokyo Night Moon color scheme. To use the color scheme, add the following to the `wezterm` configuration file. For more information, see the [wezterm configuration documentation](https://wezfurlong.org/wezterm/config/files.html).
+## Configuration Structure
+
+```
+nvim-config/
+├── init.lua              # Entry point, loads all modules
+├── lua/
+│   ├── globals.lua       # Global variables and aliases
+│   ├── settings.lua      # Neovim settings and options
+│   ├── keybindings.lua   # Custom keybindings
+│   ├── plugins.lua       # Plugin definitions with vim-plug
+│   └── plugins/          # Individual plugin configurations
+│       ├── ale.lua
+│       ├── avante.lua
+│       ├── dashboard-nvim.lua
+│       ├── lsp.lua
+│       ├── mcphub.lua
+│       ├── neoscroll.lua
+│       ├── nvim-cmp.lua
+│       ├── nvim-tree.lua
+│       ├── nvim-treesitter.lua
+│       ├── statuscol.lua
+│       ├── telescope.lua
+│       └── ufo.lua
+└── assets/
+    └── preview.png
+```
+
+## Recommended Terminal
+
+[WezTerm](https://wezfurlong.org/wezterm/index.html) with Tokyo Night Moon color scheme:
 
 ```lua
 config.color_scheme = 'Tokyo Night Moon'
 ```
+
+For more information, see the [WezTerm configuration documentation](https://wezfurlong.org/wezterm/config/files.html).
