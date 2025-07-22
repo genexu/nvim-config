@@ -23,6 +23,7 @@ if mason and mason_lspconfig then
       "pyright",
       "lua_ls"
     },
+    automatic_enable = true,
   }
 end
 

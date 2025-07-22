@@ -60,8 +60,8 @@ Plug('MeanderingProgrammer/render-markdown.nvim')
 -- Plug('dstein64/vim-startuptime')
 
 ----- AI -----
-Plug('yetone/avante.nvim', { ['branch'] = 'main', ['do'] = 'make' })
-Plug('ravitemer/mcphub.nvim', { ['do'] = 'npm install -g mcp-hub@latest' })
+-- Plug('yetone/avante.nvim', { ['branch'] = 'main', ['do'] = 'make' })
+-- Plug('ravitemer/mcphub.nvim', { ['do'] = 'npm install -g mcp-hub@latest' })
 Plug('github/copilot.vim')
 
 vim.call('plug#end')
@@ -87,5 +87,5 @@ require('plugins.nvim-treesitter')
 require('plugins.statuscol')
 require('plugins.telescope')
 require('plugins.ufo')
-require('plugins.mcphub')
-require('plugins.avante')
+-- require('plugins.mcphub')
+-- require('plugins.avante')

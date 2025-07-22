@@ -5,14 +5,18 @@ if not status_ok then
 end
 
 avante.setup({
-  provider = "openai",
-  openai = {
-    endpoint = "YOUR_AI_ENDPOINT",
-    model = "gpt-4o",
-    timeout = 30000, -- Timeout in milliseconds, increase this for reasoning models
-    temperature = 0,
-    max_completion_tokens = 4096, -- Increase this to include reasoning tokens (for reasoning models)
-    reasoning_effort = "medium", -- low|medium|high, only used for reasoning models
+  provider = "openai", -- Use the OpenAI provider
+  providers = {
+    openai = {
+      endpoint = "YOUR_OPENAI_ENDPOINT", -- Replace with your OpenAI endpoint
+      model = "YOUR_MODEL_NAME", -- Replace with your model name
+      timeout = 30000, -- Timeout in milliseconds, increase this for reasoning models
+      extra_request_body = {
+        temperature = 0,
+        max_completion_tokens = 4096, -- Increase this to include reasoning tokens (for reasoning models)
+        reasoning_effort = "medium", -- low|medium|high, only used for reasoning models
+      },
+    },
   },
   -- system_prompt as function ensures LLM always has latest MCP server state
   -- This is evaluated for every message, even in existing chats
