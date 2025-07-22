@@ -34,7 +34,7 @@ nvim +PlugClean +qall
 - Buffer navigation: `<C-,>` (previous), `<C-.>` (next), `<C-p>` (pick)
 - File tree: `<C-e>` (toggle), `<leader>nf` (find file)
 - Diagnostics: `<leader>xx` (Trouble toggle), `<leader>e` (open float)
-- ALE: `<leader>p` (fix)
+- Formatting: `<leader>p` (manual format with conform.nvim)
 
 ## Common Development Patterns
 
@@ -56,6 +56,13 @@ AI plugins (Avante, MCPHub) are currently commented out in the configuration:
 - Avante config in `lua/plugins/avante.lua` uses placeholder values that need customization
 - Update endpoint and model name in avante.lua before enabling
 
+## Formatting & Linting
+
+With nvim-lint + conform.nvim:
+- **conform.nvim** - Code formatting (manual with `<leader>p`)
+- **nvim-lint** - Auto-linting on save/edit with external tools
+- Configs: `lua/plugins/conform.lua` and `lua/plugins/nvim-lint.lua`
+
 ## Dependencies
 
 Required external tools:
@@ -63,3 +70,5 @@ Required external tools:
 - fd (optional, for faster file finding)
 - nerd-fonts (for icons)
 - Language servers managed by Mason
+- Formatters: prettier/prettierd, black, stylua, shfmt, etc.
+- Linters: eslint, flake8, shellcheck, markdownlint, etc.

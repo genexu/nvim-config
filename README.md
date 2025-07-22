@@ -44,7 +44,7 @@ ln -s $PWD/lua ~/.config/nvim/lua
 | `[n] <C-e>`      | NvimTree toggle                          |
 | `[n] <leader>nf` | NvimTree find file                       |
 | `[n] <leader>nc` | NvimTree collapse                        |
-| `[n] <leader>p`  | ALE fix                                  |
+| `[n] <leader>p`  | Format with conform.nvim                 |
 | `[n] <leader>e`  | Open diagnostics float                   |
 | `[n] <leader>xx` | Trouble diagnostics toggle               |
 | `[n] <leader>xX` | Trouble diagnostics toggle (current buf) |
@@ -126,7 +126,8 @@ LSP servers are automatically installed and configured through Mason. For more s
 - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) - Syntax highlighting
 - [nvim-autopairs](https://github.com/windwp/nvim-autopairs) - Auto-close brackets
 - [Comment.nvim](https://github.com/numToStr/Comment.nvim) - Commenting utility
-- [ale](https://github.com/dense-analysis/ale) - Linting and fixing
+- [nvim-lint](https://github.com/mfussenegger/nvim-lint) - Auto-linting with external tools
+- [conform.nvim](https://github.com/stevearc/conform.nvim) - Code formatting
 
 ### Utilities
 - [neoscroll.nvim](https://github.com/karb94/neoscroll.nvim) - Smooth scrolling
@@ -154,13 +155,14 @@ nvim-config/
 │   ├── keybindings.lua   # Custom keybindings
 │   ├── plugins.lua       # Plugin definitions with vim-plug
 │   └── plugins/          # Individual plugin configurations
-│       ├── ale.lua
 │       ├── avante.lua
+│       ├── conform.lua
 │       ├── dashboard-nvim.lua
 │       ├── lsp.lua
 │       ├── mcphub.lua
 │       ├── neoscroll.lua
 │       ├── nvim-cmp.lua
+│       ├── nvim-lint.lua
 │       ├── nvim-tree.lua
 │       ├── nvim-treesitter.lua
 │       ├── statuscol.lua

@@ -20,8 +20,14 @@ map('n', '<C-e>', 'y<ESC>:NvimTreeToggle<CR>', opts)
 map('n', '<leader>nf', '<Cmd>NvimTreeFindFile<CR>', opts)
 map('n', '<leader>nc', '<Cmd>NvimTreeCollapse<CR>', opts)
 
--- ALE
-map('n', '<leader>p', '<Cmd>ALEFix<CR>', opts)
+-- Formatting
+map('n', '<leader>p', function()
+  require('conform').format({
+    lsp_fallback = true,
+    async = false,
+    timeout_ms = 3000,
+  })
+end, { desc = "Format file or range" })
 
 -- Diagnostic
 map('n', '<leader>xx', '<Cmd>Trouble diagnostics toggle<CR>', opts)
