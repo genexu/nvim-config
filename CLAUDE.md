@@ -62,7 +62,10 @@ When modifying keybindings:
 
 ## AI Plugin Configuration
 
-AI plugins (Avante, MCPHub) are currently commented out in the configuration:
+GitHub Copilot is enabled in the configuration:
+- Run `:Copilot setup` to configure authentication
+
+AI plugins (Avante, MCPHub) are currently commented out:
 - To enable: uncomment the plugin specs in `lua/plugins.lua`
 - Create corresponding config files in `lua/configs/` if needed
 - Avante requires placeholder values to be customized for endpoints and models
@@ -84,3 +87,60 @@ Required external tools:
 - Language servers managed by Mason
 - Formatters: prettier/prettierd, black, stylua, shfmt, etc.
 - Linters: automatically installed via mason-nvim-lint (eslint_d, flake8, shellcheck, markdownlint, etc.)
+
+## Current Plugin List
+
+**Core:**
+- plenary.nvim - Lua utility functions
+- nvim-web-devicons - File type icons
+
+**UI & Themes:**
+- dashboard-nvim - Startup dashboard
+- lualine.nvim - Status line
+- nvim-tree.lua - File explorer
+- barbar.nvim - Buffer tabs
+- tokyonight.nvim - Tokyo Night color scheme
+- dressing.nvim - UI improvements
+- nui.nvim - UI components
+
+**Navigation:**
+- fzf-lua - Fast and powerful file finder and grep
+
+**LSP & Completion:**
+- nvim-lspconfig - LSP configurations
+- mason.nvim - LSP server manager
+- mason-lspconfig.nvim - Mason integration
+- nvim-cmp - Completion engine
+- cmp-nvim-lsp - LSP completion source
+- cmp-buffer - Buffer completion
+- cmp-path - Path completion
+- cmp-cmdline - Command line completion
+- cmp-vsnip - Snippet completion
+- vim-vsnip - Snippet engine  
+- vim-vsnip-integ - Snippet integration
+
+**Git Integration:**
+- vim-fugitive - Git commands
+- gitsigns.nvim - Git signs in gutter
+
+**Language & Syntax:**
+- nvim-treesitter - Syntax highlighting
+- nvim-autopairs - Auto-close brackets
+- Comment.nvim - Commenting utility
+- nvim-lint - Auto-linting with external tools
+- mason-nvim-lint - Auto-install linters through Mason
+- conform.nvim - Code formatting
+
+**Utilities:**
+- neoscroll.nvim - Smooth scrolling
+- nvim-notify - Notification system
+- todo-comments.nvim - TODO highlighting
+- trouble.nvim - Diagnostics panel
+- nvim-ufo - Folding enhancement
+- promise-async - Async utilities
+- statuscol.nvim - Status column
+- grug-far.nvim - Search and replace
+- vim-startuptime - Startup time profiling
+
+**AI:**
+- copilot.vim - GitHub Copilot

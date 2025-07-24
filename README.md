@@ -52,16 +52,12 @@ ln -s $PWD/lua ~/.config/nvim/lua
 
 Run `:Copilot setup` to configure Copilot.
 
-### Avante & MCPHub (Optional)
-AI plugins are currently commented out in the configuration:
+### Optional AI Plugins (Commented Out)
+Additional AI plugins are available but currently commented out:
 - **Avante**: AI coding assistant with Claude/OpenAI integration
-- **MCPHub**: Model Context Protocol server integration for enhanced AI capabilities
+- **MCPHub**: Model Context Protocol server integration
 
-To enable these plugins:
-1. Uncomment the plugin specs in `lua/plugins.lua`
-2. Create corresponding config files in `lua/configs/` if needed
-3. Configure the endpoint and model settings for Avante
-4. Restart Neovim - lazy.nvim will automatically install the plugins
+To enable: uncomment the plugin specs in `lua/plugins.lua` and configure as needed.
 
 ## LSP (Language Server Protocol)
 
@@ -92,12 +88,12 @@ LSP servers are automatically installed and configured through Mason. For more s
 - [nui.nvim](https://github.com/MunifTanjim/nui.nvim) - UI components
 
 ### Navigation
-- [fzf-lua](https://github.com/ibhagwan/fzf-lua) - Lua fzf integration
+- [fzf-lua](https://github.com/ibhagwan/fzf-lua) - Fast and powerful file finder and grep
 
 ### LSP & Completion
+- [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) - LSP configurations
 - [mason.nvim](https://github.com/williamboman/mason.nvim) - LSP server manager
 - [mason-lspconfig.nvim](https://github.com/williamboman/mason-lspconfig.nvim) - Mason integration
-- [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) - LSP configurations
 - [nvim-cmp](https://github.com/hrsh7th/nvim-cmp) - Completion engine
 - [cmp-nvim-lsp](https://github.com/hrsh7th/cmp-nvim-lsp) - LSP completion source
 - [cmp-buffer](https://github.com/hrsh7th/cmp-buffer) - Buffer completion
@@ -124,15 +120,14 @@ LSP servers are automatically installed and configured through Mason. For more s
 - [nvim-notify](https://github.com/rcarriga/nvim-notify) - Notification system
 - [todo-comments.nvim](https://github.com/folke/todo-comments.nvim) - TODO highlighting
 - [trouble.nvim](https://github.com/folke/trouble.nvim) - Diagnostics panel
-- [promise-async](https://github.com/kevinhwang91/promise-async) - Async utilities
 - [nvim-ufo](https://github.com/kevinhwang91/nvim-ufo) - Folding enhancement
+- [promise-async](https://github.com/kevinhwang91/promise-async) - Async utilities
 - [statuscol.nvim](https://github.com/luukvbaal/statuscol.nvim) - Status column
+- [grug-far.nvim](https://github.com/MagicDuck/grug-far.nvim) - Search and replace
 - [vim-startuptime](https://github.com/dstein64/vim-startuptime) - Startup time profiling
 
-### AI (Optional)
+### AI
 - [github/copilot.vim](https://github.com/github/copilot.vim) - GitHub Copilot
-- [yetone/avante.nvim](https://github.com/yetone/avante.nvim) - AI coding assistant *(commented out)*
-- [ravitemer/mcphub.nvim](https://github.com/ravitemer/mcphub.nvim) - MCP integration *(commented out)*
 
 ## Configuration Structure
 
