@@ -8,7 +8,6 @@ end
 
 local mason = safe_require("mason")
 local mason_lspconfig = safe_require("mason-lspconfig")
-local lsp = safe_require("lspconfig")
 local cmp_nvim_lsp = safe_require("cmp_nvim_lsp")
 local navic = safe_require("nvim-navic")
 
@@ -25,10 +24,6 @@ if mason and mason_lspconfig then
     },
     automatic_enable = false,
   }
-end
-
-if not lsp then
-  return
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -51,10 +46,7 @@ end
 local servers = {
   gopls = {},
   pyright = {},
-  ts_ls = {
-    filetypes = { "typescript", "typescriptreact", "typescript.tsx", "javascript", "javascriptreact", "javascript.tsx" },
-    root_dir = lsp.util.root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git"),
-  },
+  ts_ls = {},
   html = {},
   cssls = {},
   lua_ls = {
@@ -72,7 +64,9 @@ local servers = {
 for server, config in pairs(servers) do
   config.capabilities = capabilities
   config.on_attach = on_attach
-  lsp[server].setup(config)
+
+  vim.lsp.config(server, config)
+  vim.lsp.enable(server)
 end
 
 -- Configure diagnostics display with deduplication

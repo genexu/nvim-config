@@ -61,9 +61,6 @@ return {
   },
   ----- LSP -----
   {
-    "neovim/nvim-lspconfig"
-  },
-  {
     "williamboman/mason.nvim",
     config = function()
       require("configs.lsp")
@@ -73,7 +70,6 @@ return {
     "williamboman/mason-lspconfig.nvim",
     dependencies = {
       "mason-org/mason.nvim",
-      "neovim/nvim-lspconfig",
     },
   },
   ----- Completions -----
