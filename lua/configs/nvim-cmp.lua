@@ -1,6 +1,15 @@
-local status_ok, cmp = pcall(require, "cmp")
+local function safe_require(module)
+  local status_ok, mod = pcall(require, module)
+  if not status_ok then
+    return nil
+  end
+  return mod
+end
 
-if not status_ok then
+cmp = safe_require("cmp")
+luasnip = safe_require("luasnip")
+
+if not cmp or not luasnip then
   return
 end
 
@@ -35,7 +44,7 @@ local cmp_kinds = {
 cmp.setup({
   snippet = {
     expand = function(args)
-      vim.fn["vsnip#anonymous"](args.body)
+      luasnip.lsp_expand(args.body)
     end,
   },
   mapping = {
@@ -47,10 +56,12 @@ cmp.setup({
       select = true,
     }),
   },
-  sources = {
+  sources = cmp.config.sources({
     { name = 'nvim_lsp' },
-    { name = 'vsnip' },
-  },
+    { name = 'luasnip' }
+  }, {
+    { name = 'buffer' },
+  }),
   formatting = {
     fields = { "abbr", "kind" },
     format = function(_, vim_item)

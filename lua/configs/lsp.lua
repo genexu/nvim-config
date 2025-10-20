@@ -10,6 +10,7 @@ local mason = safe_require("mason")
 local mason_lspconfig = safe_require("mason-lspconfig")
 local cmp_nvim_lsp = safe_require("cmp_nvim_lsp")
 local navic = safe_require("nvim-navic")
+local capabilities = vim.lsp.protocol.make_client_capabilities()
 
 if mason and mason_lspconfig then
   mason.setup()
@@ -26,16 +27,9 @@ if mason and mason_lspconfig then
   }
 end
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-
 if cmp_nvim_lsp then
   capabilities = cmp_nvim_lsp.default_capabilities()
 end
-
-capabilities.textDocument.foldingRange = {
-  dynamicRegistration = false,
-  lineFoldingOnly = true,
-}
 
 local on_attach = function(client, bufnr)
   if navic then
@@ -43,22 +37,14 @@ local on_attach = function(client, bufnr)
   end
 end
 
-local servers = {
-  gopls = {},
-  pyright = {},
-  ts_ls = {},
-  html = {},
-  cssls = {},
-  lua_ls = {
-    settings = {
-      Lua = {
-        diagnostics = {
-          globals = { "vim" }
-        }
-      }
-    }
-  }
-}
+ local servers = {
+    gopls = {},
+    pyright = {},
+    ts_ls = {},
+    html = {},
+    cssls = {},
+    lua_ls = {}
+ }
 
 -- Set up each LSP server with the common capabilities and on_attach
 for server, config in pairs(servers) do
