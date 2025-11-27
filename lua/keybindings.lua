@@ -21,6 +21,12 @@ map('n', '<C-e>', 'y<ESC>:NvimTreeToggle<CR>', opts)
 map('n', '<leader>nf', '<Cmd>NvimTreeFindFile<CR>', opts)
 map('n', '<leader>nc', '<Cmd>NvimTreeCollapse<CR>', opts)
 
+-- Barbar
+map('n', '<A-,>', '<Cmd>BufferPrevious<CR>', opts)
+map('n', '<A-.>', '<Cmd>BufferNext<CR>', opts)
+map('n', '<A-c>', '<Cmd>BufferClose<CR>', opts)
+map('n', '<A-C>', '<Cmd>BufferCloseAllButCurrent<CR>', opts)
+
 -- Formatting
 map('n', '<leader>p', function()
   require('conform').format({

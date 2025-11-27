@@ -10,6 +10,7 @@ local mason = safe_require("mason")
 local mason_lspconfig = safe_require("mason-lspconfig")
 local cmp_nvim_lsp = safe_require("cmp_nvim_lsp")
 local navic = safe_require("nvim-navic")
+local utils = require("utils")
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
 if mason and mason_lspconfig then
@@ -39,7 +40,20 @@ end
 
  local servers = {
     gopls = {},
-    pyright = {},
+    pyright = {
+      before_init = function(_, config)
+        config.settings.python.pythonPath = utils.get_python_path(config.root_dir)
+      end,
+      settings = {
+        python = {
+          analysis = {
+            autoSearchPaths = true,
+            useLibraryCodeForTypes = true,
+            diagnosticMode = 'workspace',
+          },
+        },
+      },
+    },
     ts_ls = {},
     html = {},
     cssls = {},
