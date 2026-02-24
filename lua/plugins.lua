@@ -20,7 +20,7 @@ return {
       'nvim-tree/nvim-web-devicons'
     },
     config = function()
-      require("lualine").setup()
+      require("configs.lualine")
     end,
   },
   {
@@ -99,6 +99,7 @@ return {
   },
   {
     "lewis6991/gitsigns.nvim",
+    event = "BufReadPre",
     config = function()
       require("gitsigns").setup()
     end,
@@ -127,6 +128,10 @@ return {
   },
   {
     "numToStr/Comment.nvim",
+    keys = {
+      { "gc", mode = { "n", "v" }, desc = "Comment toggle linewise" },
+      { "gb", mode = { "n", "v" }, desc = "Comment toggle blockwise" },
+    },
     config = function()
       require("Comment").setup()
     end,
