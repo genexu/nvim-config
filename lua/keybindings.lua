@@ -36,6 +36,15 @@ map('n', '<leader>p', function()
   })
 end, { desc = "Format file or range" })
 
+-- LSP
+map('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+map('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+map('n', 'gi', '<Cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+map('n', 'gr', '<Cmd>lua vim.lsp.buf.references()<CR>', opts)
+map('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+map('n', '<leader>rn', '<Cmd>lua vim.lsp.buf.rename()<CR>', opts)
+map('n', '<leader>ca', '<Cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+
 -- Diagnostic
 map('n', '<leader>xx', '<Cmd>Trouble diagnostics toggle<CR>', opts)
 map('n', '<leader>xX', '<Cmd>Trouble diagnostics toggle filter.buf=0<CR>', opts)
