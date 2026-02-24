@@ -45,6 +45,11 @@ map('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
 map('n', '<leader>rn', '<Cmd>lua vim.lsp.buf.rename()<CR>', opts)
 map('n', '<leader>ca', '<Cmd>lua vim.lsp.buf.code_action()<CR>', opts)
 
+-- Git
+map('n', '<leader>gd', '<Cmd>DiffviewOpen<CR>', opts)
+map('n', '<leader>gh', '<Cmd>DiffviewFileHistory %<CR>', opts)
+map('n', '<leader>gc', '<Cmd>DiffviewClose<CR>', opts)
+
 -- Diagnostic
 map('n', '<leader>xx', '<Cmd>Trouble diagnostics toggle<CR>', opts)
 map('n', '<leader>xX', '<Cmd>Trouble diagnostics toggle filter.buf=0<CR>', opts)

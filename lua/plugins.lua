@@ -74,6 +74,10 @@ return {
       require("configs.lsp")
     end,
   },
+  {
+    "j-hui/fidget.nvim",
+    opts = {},
+  },
   ----- Completions -----
   {
     "hrsh7th/nvim-cmp",
@@ -98,6 +102,11 @@ return {
     config = function()
       require("gitsigns").setup()
     end,
+  },
+  {
+    "sindrets/diffview.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    cmd = { "DiffviewOpen", "DiffviewFileHistory", "DiffviewClose" },
   },
   ----- Languages & Syntax -----
   {
