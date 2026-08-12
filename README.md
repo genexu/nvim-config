@@ -3,7 +3,7 @@
 ![preview](./assets/preview.png)
 
 ## Requirements
-- [Neovim](https://neovim.io/) (v0.8+)
+- [Neovim](https://neovim.io/) (v0.11+)
 - [ripgrep](https://github.com/BurntSushi/ripgrep) - Required for FzfLua live grep
 - [fd](https://github.com/sharkdp/fd) - (Optional) Faster alternative to `find` for FzfLua
 - [nerd-fonts](https://github.com/ryanoasis/nerd-fonts) - Required for icons in NvimTree
@@ -61,7 +61,7 @@ To enable: uncomment the plugin specs in `lua/plugins.lua` and configure as need
 
 ## LSP (Language Server Protocol)
 
-This configuration uses [Mason](https://github.com/williamboman/mason.nvim) for automatic LSP server management. Configured language servers include:
+This configuration uses [Mason](https://github.com/mason-org/mason.nvim) for automatic LSP server management. Configured language servers include:
 
 - **TypeScript/JavaScript**: `ts_ls` (formerly tsserver)
 - **Python**: `pyright`
@@ -92,16 +92,11 @@ LSP servers are automatically installed and configured through Mason. For more s
 
 ### LSP & Completion
 - [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) - LSP configurations
-- [mason.nvim](https://github.com/williamboman/mason.nvim) - LSP server manager
-- [mason-lspconfig.nvim](https://github.com/williamboman/mason-lspconfig.nvim) - Mason integration
-- [nvim-cmp](https://github.com/hrsh7th/nvim-cmp) - Completion engine
-- [cmp-nvim-lsp](https://github.com/hrsh7th/cmp-nvim-lsp) - LSP completion source
-- [cmp-buffer](https://github.com/hrsh7th/cmp-buffer) - Buffer completion
-- [cmp-path](https://github.com/hrsh7th/cmp-path) - Path completion
-- [cmp-cmdline](https://github.com/hrsh7th/cmp-cmdline) - Command line completion
-- [cmp-vsnip](https://github.com/hrsh7th/cmp-vsnip) - Snippet completion
-- [vim-vsnip](https://github.com/hrsh7th/vim-vsnip) - Snippet engine
-- [vim-vsnip-integ](https://github.com/hrsh7th/vim-vsnip-integ) - Snippet integration
+- [mason.nvim](https://github.com/mason-org/mason.nvim) - LSP server manager
+- [mason-lspconfig.nvim](https://github.com/mason-org/mason-lspconfig.nvim) - Mason integration
+- [fidget.nvim](https://github.com/j-hui/fidget.nvim) - LSP progress UI
+- [blink.cmp](https://github.com/Saghen/blink.cmp) - Completion engine (Rust fuzzy matcher)
+- [LuaSnip](https://github.com/L3MON4D3/LuaSnip) - Snippet engine
 
 ### Git Integration
 - [vim-fugitive](https://github.com/tpope/vim-fugitive) - Git commands
@@ -140,14 +135,15 @@ nvim-config/
 │   ├── keybindings.lua   # Custom keybindings
 │   ├── plugins.lua       # Plugin definitions with lazy.nvim
 │   └── configs/          # Individual plugin configurations
+│       ├── blink.lua
 │       ├── conform.lua
 │       ├── dashboard-nvim.lua
 │       ├── lazy.lua
 │       ├── lsp.lua
-│       ├── neoscroll.lua
-│       ├── nvim-cmp.lua
-│       ├── nvim-lint.lua
+│       ├── lualine.lua
 │       ├── mason-nvim-lint.lua
+│       ├── neoscroll.lua
+│       ├── nvim-lint.lua
 │       ├── nvim-tree.lua
 │       ├── nvim-treesitter.lua
 │       ├── statuscol.lua

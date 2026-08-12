@@ -80,17 +80,12 @@ return {
   },
   ----- Completions -----
   {
-    "hrsh7th/nvim-cmp",
-    dependencies = {
-      "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-path",
-      "hrsh7th/cmp-cmdline",
-      "L3MON4D3/LuaSnip",
-      "saadparwaiz1/cmp_luasnip",
-    },
+    "saghen/blink.cmp",
+    event = "InsertEnter",
+    dependencies = { "saghen/blink.lib", "L3MON4D3/LuaSnip" },
+    build = function() require("blink.cmp").build():pwait() end,
     config = function()
-      require("configs.nvim-cmp")
+      require("configs.blink")
     end,
   },
   ----- Git Integration -----
@@ -145,7 +140,7 @@ return {
   {
     "rshkarin/mason-nvim-lint",
     dependencies = {
-      "williamboman/mason.nvim",
+      "mason-org/mason.nvim",
       "mfussenegger/nvim-lint",
     },
     config = function()

@@ -8,8 +8,7 @@ end
 
 local mason = safe_require("mason")
 local mason_lspconfig = safe_require("mason-lspconfig")
-local cmp_nvim_lsp = safe_require("cmp_nvim_lsp")
-local navic = safe_require("nvim-navic")
+local blink = safe_require("blink.cmp")
 local utils = require("utils")
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
@@ -28,14 +27,11 @@ if mason and mason_lspconfig then
   }
 end
 
-if cmp_nvim_lsp then
-  capabilities = cmp_nvim_lsp.default_capabilities()
+if blink then
+  capabilities = blink.get_lsp_capabilities(capabilities)
 end
 
 local on_attach = function(client, bufnr)
-  if navic then
-    navic.attach(client, bufnr)
-  end
 end
 
  local servers = {
