@@ -54,3 +54,8 @@ map('n', '<leader>gc', '<Cmd>DiffviewClose<CR>', opts)
 map('n', '<leader>xx', '<Cmd>Trouble diagnostics toggle<CR>', opts)
 map('n', '<leader>xX', '<Cmd>Trouble diagnostics toggle filter.buf=0<CR>', opts)
 map('n', '<leader>e', '<Cmd>lua vim.diagnostic.open_float()<CR>', opts)
+
+-- LSP inlay hints (nvim 0.11+)
+map('n', '<leader>ih', function()
+  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+end, { desc = "Toggle inlay hints" })

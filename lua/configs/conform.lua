@@ -35,6 +35,12 @@ conform.setup({
   -- Notify on format errors
   notify_on_error = true,
 
+  -- Auto-format on write (same fallback chain as manual <leader>p)
+  format_on_save = {
+    lsp_format = "fallback",
+    timeout_ms = 3000,
+  },
+
   -- Formatters configuration
   formatters = {
     shfmt = {

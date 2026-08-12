@@ -40,6 +40,7 @@ ln -s $PWD/lua ~/.config/nvim/lua
 | `[n] <leader>nc` | NvimTree collapse                        |
 | `[n] <leader>p`  | Format with conform.nvim                 |
 | `[n] <leader>e`  | Open diagnostics float                   |
+| `[n] <leader>ih` | Toggle LSP inlay hints                   |
 | `[n] <leader>xx` | Trouble diagnostics toggle               |
 | `[n] <leader>xX` | Trouble diagnostics toggle (current buf) |
 | `[n] <leader>zR` | UFO Open all folds                       |
@@ -70,8 +71,7 @@ LSP servers are automatically installed and configured through Mason. For more s
 - [tokyonight.nvim](https://github.com/folke/tokyonight.nvim) - Tokyo Night color scheme
 - [nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua) - File explorer
 - [barbar.nvim](https://github.com/romgrk/barbar.nvim) - Buffer tabs
-- [dressing.nvim](https://github.com/stevearc/dressing.nvim) - UI improvements
-- [nui.nvim](https://github.com/MunifTanjim/nui.nvim) - UI components
+- [which-key.nvim](https://github.com/folke/which-key.nvim) - Leader-key discovery popup
 
 ### Navigation
 - [fzf-lua](https://github.com/ibhagwan/fzf-lua) - Fast and powerful file finder and grep

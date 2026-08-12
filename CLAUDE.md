@@ -90,8 +90,7 @@ Required external tools:
 - nvim-tree.lua - File explorer
 - barbar.nvim - Buffer tabs
 - tokyonight.nvim - Tokyo Night color scheme
-- dressing.nvim - UI improvements
-- nui.nvim - UI components
+- which-key.nvim - Leader-key discovery popup
 
 **Navigation:**
 - fzf-lua - Fast and powerful file finder and grep
@@ -100,14 +99,9 @@ Required external tools:
 - nvim-lspconfig - LSP configurations
 - mason.nvim - LSP server manager
 - mason-lspconfig.nvim - Mason integration
-- nvim-cmp - Completion engine
-- cmp-nvim-lsp - LSP completion source
-- cmp-buffer - Buffer completion
-- cmp-path - Path completion
-- cmp-cmdline - Command line completion
-- cmp-vsnip - Snippet completion
-- vim-vsnip - Snippet engine  
-- vim-vsnip-integ - Snippet integration
+- fidget.nvim - LSP progress UI
+- blink.cmp - Completion engine (Rust fuzzy matcher)
+- LuaSnip - Snippet engine
 
 **Git Integration:**
 - vim-fugitive - Git commands
