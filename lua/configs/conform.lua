@@ -1,8 +1,5 @@
-local status_ok, conform = pcall(require, "conform")
-
-if not status_ok then
-  return
-end
+local conform = require("utils").safe_require("conform")
+if not conform then return end
 
 conform.setup({
   formatters_by_ft = {

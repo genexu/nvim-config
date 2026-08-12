@@ -1,8 +1,5 @@
-local status_ok, statuscol = pcall(require, "statuscol")
-
-if not status_ok then
-  return
-end
+local statuscol = require("utils").safe_require("statuscol")
+if not statuscol then return end
 
 local builtin = require("statuscol.builtin")
 require("statuscol").setup({

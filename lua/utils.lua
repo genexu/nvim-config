@@ -1,5 +1,13 @@
 local M = {}
 
+-- pcall(require) wrapper: returns the module or nil (no error, no side effects).
+-- Use in plugin configs so a missing plugin doesn't halt startup.
+function M.safe_require(module)
+  local ok, mod = pcall(require, module)
+  if not ok then return nil end
+  return mod
+end
+
 function M.get_python_path(workspace)
   local util = require('lspconfig.util')
   local path = util.path

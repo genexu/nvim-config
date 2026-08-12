@@ -1,8 +1,5 @@
-local status_ok, neoscroll = pcall(require, "neoscroll")
-
-if not status_ok then
-  return
-end
+local neoscroll = require("utils").safe_require("neoscroll")
+if not neoscroll then return end
 
 neoscroll.setup({
   mappings = {                 -- Keys to be mapped to their corresponding default scrolling animation

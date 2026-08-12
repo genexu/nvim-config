@@ -1,15 +1,7 @@
-local function safe_require(module)
-  local status_ok, mod = pcall(require, module)
-  if not status_ok then
-    return nil
-  end
-  return mod
-end
-
-local mason = safe_require("mason")
-local mason_lspconfig = safe_require("mason-lspconfig")
-local blink = safe_require("blink.cmp")
 local utils = require("utils")
+local mason = utils.safe_require("mason")
+local mason_lspconfig = utils.safe_require("mason-lspconfig")
+local blink = utils.safe_require("blink.cmp")
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
 if mason and mason_lspconfig then

@@ -3,10 +3,21 @@
 ![preview](./assets/preview.png)
 
 ## Requirements
-- [Neovim](https://neovim.io/) (v0.11+)
-- [ripgrep](https://github.com/BurntSushi/ripgrep) - Required for FzfLua live grep
-- [fd](https://github.com/sharkdp/fd) - (Optional) Faster alternative to `find` for FzfLua
-- [nerd-fonts](https://github.com/ryanoasis/nerd-fonts) - Required for icons in NvimTree
+
+### System
+- [Neovim](https://neovim.io/) (v0.11+; v0.12 supported)
+- [ripgrep](https://github.com/BurntSushi/ripgrep) - FzfLua live grep
+- [fd](https://github.com/sharkdp/fd) - (Optional) faster file finding for FzfLua
+- [nerd-fonts](https://github.com/ryanoasis/nerd-fonts) - icons
+- [tree-sitter-cli](https://github.com/tree-sitter/tree-sitter) - compiles parsers for `nvim-treesitter` main branch: `brew install tree-sitter-cli`
+- Rust toolchain (`rustup` / `cargo`) - required to build [blink.cmp](https://github.com/Saghen/blink.cmp)'s Rust fuzzy matcher on first install
+- `git`, `make`, C compiler - required by Mason and various plugin builds
+
+### Language Servers, Formatters, Linters
+Auto-installed via Mason on first launch. Manually managed via `:Mason`.
+- LSPs: `ts_ls`, `pyright`, `gopls`, `lua_ls`, `html`, `cssls`
+- Formatters (via conform): prettier/prettierd, black, isort, stylua, gofmt, goimports, shfmt
+- Linters (via nvim-lint): eslint_d, flake8, mypy, golangcilint, shellcheck, markdownlint, yamllint, jsonlint
 
 ## Plugin Manager
 This configuration uses [lazy.nvim](https://github.com/folke/lazy.nvim) as the plugin manager. Lazy.nvim will be automatically installed on first startup.

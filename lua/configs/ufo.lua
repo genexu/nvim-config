@@ -1,8 +1,5 @@
-local status_ok, ufo = pcall(require, 'ufo')
-
-if not status_ok then
-  return
-end
+local ufo = require("utils").safe_require("ufo")
+if not ufo then return end
 
 ufo.setup()
 

@@ -1,8 +1,5 @@
-local status_ok, mason_nvim_lint = pcall(require, "mason-nvim-lint")
-
-if not status_ok then
-  return
-end
+local mason_nvim_lint = require("utils").safe_require("mason-nvim-lint")
+if not mason_nvim_lint then return end
 
 mason_nvim_lint.setup({
   -- Ensure these linters are installed automatically

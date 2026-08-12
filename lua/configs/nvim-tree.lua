@@ -1,8 +1,5 @@
-local status_ok, nvim_tree = pcall(require, "nvim-tree")
-
-if not status_ok then
-  return
-end
+local nvim_tree = require("utils").safe_require("nvim-tree")
+if not nvim_tree then return end
 
 nvim_tree.setup({
   filters = {

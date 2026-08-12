@@ -1,10 +1,6 @@
-local status_ok, lint = pcall(require, "lint")
-
-if not status_ok then
-  return
-end
-
 local utils = require("utils")
+local lint = utils.safe_require("lint")
+if not lint then return end
 
 -- Customize mypy to use venv
 lint.linters.mypy = require('lint').linters.mypy

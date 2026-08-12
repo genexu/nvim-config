@@ -1,7 +1,5 @@
-local ok, blink = pcall(require, "blink.cmp")
-if not ok then
-  return
-end
+local blink = require("utils").safe_require("blink.cmp")
+if not blink then return end
 
 blink.setup({
   -- preserve muscle memory from old nvim-cmp setup:
