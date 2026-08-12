@@ -60,16 +60,6 @@ When modifying keybindings:
 - Follow existing patterns for leader key combinations
 - Update README.md keybindings table if adding new mappings
 
-## AI Plugin Configuration
-
-GitHub Copilot is enabled in the configuration:
-- Run `:Copilot setup` to configure authentication
-
-AI plugins (Avante, MCPHub) are currently commented out:
-- To enable: uncomment the plugin specs in `lua/plugins.lua`
-- Create corresponding config files in `lua/configs/` if needed
-- Avante requires placeholder values to be customized for endpoints and models
-
 ## Formatting & Linting
 
 With nvim-lint + conform.nvim + mason-nvim-lint:
@@ -141,6 +131,3 @@ Required external tools:
 - statuscol.nvim - Status column
 - grug-far.nvim - Search and replace
 - vim-startuptime - Startup time profiling
-
-**AI:**
-- copilot.vim - GitHub Copilot

@@ -218,10 +218,4 @@ return {
       vim.g.startuptime_tries = 10
     end,
   },
-  ----- AI -----
-  {
-    "github/copilot.vim"
-  }
-  -- Plug('yetone/avante.nvim', { ['branch'] = 'main', ['do'] = 'make' })
-  -- Plug('ravitemer/mcphub.nvim', { ['do'] = 'npm install -g mcp-hub@latest' })
 }

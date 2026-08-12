@@ -45,20 +45,6 @@ ln -s $PWD/lua ~/.config/nvim/lua
 | `[n] <leader>zR` | UFO Open all folds                       |
 | `[n] <leader>zM` | UFO Close all folds                      |
 
-## AI Integration
-
-### GitHub Copilot
-[copilot.vim](https://github.com/github/copilot.vim)
-
-Run `:Copilot setup` to configure Copilot.
-
-### Optional AI Plugins (Commented Out)
-Additional AI plugins are available but currently commented out:
-- **Avante**: AI coding assistant with Claude/OpenAI integration
-- **MCPHub**: Model Context Protocol server integration
-
-To enable: uncomment the plugin specs in `lua/plugins.lua` and configure as needed.
-
 ## LSP (Language Server Protocol)
 
 This configuration uses [Mason](https://github.com/mason-org/mason.nvim) for automatic LSP server management. Configured language servers include:
@@ -120,9 +106,6 @@ LSP servers are automatically installed and configured through Mason. For more s
 - [statuscol.nvim](https://github.com/luukvbaal/statuscol.nvim) - Status column
 - [grug-far.nvim](https://github.com/MagicDuck/grug-far.nvim) - Search and replace
 - [vim-startuptime](https://github.com/dstein64/vim-startuptime) - Startup time profiling
-
-### AI
-- [github/copilot.vim](https://github.com/github/copilot.vim) - GitHub Copilot
 
 ## Configuration Structure
 
