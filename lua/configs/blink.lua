@@ -9,7 +9,8 @@ blink.setup({
     ["<CR>"] = { "accept", "fallback" },
     ["<C-c>"] = { "hide", "fallback" },
     ["<C-Space>"] = { "show", "show_documentation", "hide_documentation" },
-    ["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
+    -- disabled for copilot compatibility
+    -- ["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
     ["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
   },
   snippets = { preset = "luasnip" },
@@ -26,4 +27,3 @@ blink.setup({
   fuzzy = { implementation = "rust" },
   appearance = { nerd_font_variant = "mono" },
 })
-
