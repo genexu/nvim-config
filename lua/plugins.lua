@@ -225,6 +225,28 @@ return {
       });
     end,
   },
+  ------ Strudel -----
+  {
+    "gruvw/strudel.nvim",
+    build = "npm ci",
+    config = function()
+      require("strudel").setup({
+        ui = {
+          maximise_menu_panel = false,
+          hide_menu_panel = true,
+          hide_top_bar = true,
+          hide_code_editor = false,
+          hide_error_display = true,
+        },
+        start_on_launch = true,    -- evaluate the buffer on launch
+        update_on_save = true,     -- re-evaluate on save while playback is active
+        sync_cursor = true,        -- two-way cursor sync with the browser
+        report_eval_errors = true, -- surface Strudel evaluation errors in Neovim
+        headless = false,          -- keep the browser window visible
+      })
+    end,
+  },
+  ------ Performance -----
   {
     "dstein64/vim-startuptime",
     -- lazy-load on a command

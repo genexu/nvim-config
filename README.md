@@ -56,6 +56,13 @@ ln -s $PWD/lua ~/.config/nvim/lua
 | `[n] <leader>xX` | Trouble diagnostics toggle (current buf) |
 | `[n] <leader>zR` | UFO Open all folds                       |
 | `[n] <leader>zM` | UFO Close all folds                      |
+| `[n] <leader>sl` | Launch Strudel                            |
+| `[n] <leader>sq` | Quit Strudel                              |
+| `[n] <leader>st` | Toggle Strudel playback                   |
+| `[n] <leader>su` | Evaluate Strudel buffer                   |
+| `[n] <leader>ss` | Stop Strudel playback                     |
+| `[n] <leader>sb` | Sync current buffer with Strudel          |
+| `[n] <leader>sx` | Sync and evaluate Strudel buffer          |
 
 ## LSP (Language Server Protocol)
 
@@ -106,6 +113,18 @@ LSP servers are automatically installed and configured through Mason. For more s
 - [nvim-lint](https://github.com/mfussenegger/nvim-lint) - Auto-linting with external tools
 - [mason-nvim-lint](https://github.com/rshkarin/mason-nvim-lint) - Auto-install linters through Mason
 - [conform.nvim](https://github.com/stevearc/conform.nvim) - Code formatting
+
+### Strudel live coding
+[strudel.nvim](https://github.com/gruvw/strudel.nvim) is bundled and configured for a side-by-side live-coding workflow: Neovim is the only code editor, while a visible Strudel browser window provides playback controls, error display, and visuals. It requires Node.js >= 16, npm, and a Chromium-based browser (this machine has Node `v24.18.1`, npm `11.16.0`, and Google Chrome installed).
+
+Opening a `.str` or `.std` file assigns the `javascript` filetype, so the existing JavaScript Tree-sitter parser highlights the JavaScript structure while Strudel mini-notation remains a string literal. No separate syntax grammar or completion plugin is installed.
+
+Workflow:
+1. Write or open a `.str` buffer and save it.
+2. Run `\\sl` to launch Strudel in a visible browser window and begin playback.
+3. While playing, use `\\su` or save the buffer to evaluate edits.
+4. Use `\\sx` after switching to another buffer to sync and evaluate it.
+5. Use `\\st`, `\\ss`, and `\\sq` for toggle, stop, and quit.
 
 ### Utilities
 - [neoscroll.nvim](https://github.com/karb94/neoscroll.nvim) - Smooth scrolling

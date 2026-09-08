@@ -36,6 +36,16 @@ map('n', '<leader>p', function()
   })
 end, { desc = "Format file or range" })
 
+-- Strudel
+local strudel = require('strudel')
+map('n', '<leader>sl', strudel.launch, { desc = "Launch Strudel" })
+map('n', '<leader>sq', strudel.quit, { desc = "Quit Strudel" })
+map('n', '<leader>st', strudel.toggle, { desc = "Toggle Strudel playback" })
+map('n', '<leader>su', strudel.update, { desc = "Evaluate Strudel buffer" })
+map('n', '<leader>ss', strudel.stop, { desc = "Stop Strudel playback" })
+map('n', '<leader>sb', strudel.set_buffer, { desc = "Sync current buffer with Strudel" })
+map('n', '<leader>sx', strudel.execute, { desc = "Sync and evaluate Strudel buffer" })
+
 -- LSP
 map('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
 map('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
