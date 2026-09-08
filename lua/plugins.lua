@@ -51,12 +51,12 @@ return {
       preset = "modern",
       delay = 400,
       spec = {
-        { "<leader>f", group = "find" },
-        { "<leader>n", group = "nvim-tree" },
-        { "<leader>g", group = "git" },
-        { "<leader>x", group = "diagnostics" },
-        { "<leader>p", desc = "Format buffer" },
-        { "<leader>e", desc = "Diagnostic float" },
+        { "<leader>f",  group = "find" },
+        { "<leader>n",  group = "nvim-tree" },
+        { "<leader>g",  group = "git" },
+        { "<leader>x",  group = "diagnostics" },
+        { "<leader>p",  desc = "Format buffer" },
+        { "<leader>e",  desc = "Diagnostic float" },
         { "<leader>rn", desc = "LSP rename" },
         { "<leader>ca", desc = "LSP code action" },
         { "<leader>ih", desc = "Toggle inlay hints" },
@@ -100,6 +100,9 @@ return {
     config = function()
       require("configs.blink")
     end,
+  },
+  {
+    "github/copilot.vim",
   },
   ----- Git Integration -----
   {
