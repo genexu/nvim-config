@@ -23,14 +23,21 @@ Auto-installed via Mason on first launch. Manually managed via `:Mason`.
 This configuration uses [lazy.nvim](https://github.com/folke/lazy.nvim) as the plugin manager. Lazy.nvim will be automatically installed on first startup.
 
 ## Installation
-1. Clone this repository. 
-2. Link the `init.lua` and `lua` directory to the Neovim configuration directory, usually `~/.config/nvim`.
+1. Clone this repository with submodules (or run `git submodule update --init` after a plain clone):
+```sh
+git clone --recurse-submodules <repo-url>
+```
+2. Build the bundled Strudel language server (requires Node >= 18 and pnpm):
+```sh
+pnpm install --dir lsp/str-ls && pnpm --dir lsp/str-ls build
+```
+3. Link the `init.lua` and `lua` directory to the Neovim configuration directory, usually `~/.config/nvim`.
 ```sh
 ln -s $PWD/init.lua ~/.config/nvim/init.lua
 ln -s $PWD/lua ~/.config/nvim/lua
 ```
-3. Start Neovim - lazy.nvim will automatically bootstrap and install all plugins.
-4. Optionally run `:Lazy` to open the plugin manager interface.
+4. Start Neovim - lazy.nvim will automatically bootstrap and install all plugins.
+5. Optionally run `:Lazy` to open the plugin manager interface.
 
 
 ## Keybindings
@@ -73,7 +80,7 @@ This configuration uses [Mason](https://github.com/mason-org/mason.nvim) for aut
 - **Go**: `gopls`
 - **Lua**: `lua_ls`
 - **HTML**: `html`
-- **CSS**: `cssls`
+- **Strudel**: `str-ls` - bundled as the `lsp/str-ls` git submodule, attaches to the custom `strudel` filetype
 
 LSP servers are automatically installed and configured through Mason. For more server configurations, see the [nvim-lspconfig documentation](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md).
 
@@ -117,7 +124,7 @@ LSP servers are automatically installed and configured through Mason. For more s
 ### Strudel live coding
 [strudel.nvim](https://github.com/gruvw/strudel.nvim) is bundled and configured for a side-by-side live-coding workflow: Neovim is the only code editor, while a visible Strudel browser window provides playback controls, error display, and visuals. It requires Node.js >= 16, npm, and a Chromium-based browser (this machine has Node `v24.18.1`, npm `11.16.0`, and Google Chrome installed).
 
-Opening a `.str` or `.std` file assigns the `javascript` filetype, so the existing JavaScript Tree-sitter parser highlights the JavaScript structure while Strudel mini-notation remains a string literal. No separate syntax grammar or completion plugin is installed.
+Opening a `.str`, `.std`, or `.strudel` file assigns the custom `strudel` filetype. The bundled [str-ls](https://github.com/marcoskichel/str-ls) language server (git submodule at `lsp/str-ls`, built to `lsp/str-ls/dist/server.js`) attaches automatically and provides Strudel API hover documentation and mini-notation completion. Tree-sitter highlighting uses the existing `javascript` parser via `vim.treesitter.language.register`.
 
 Workflow:
 1. Write or open a `.str` buffer and save it.

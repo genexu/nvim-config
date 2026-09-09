@@ -31,12 +31,13 @@ end
 vim.treesitter.language.register("tsx", "typescriptreact")
 vim.treesitter.language.register("bash", { "sh", "zsh" })
 vim.treesitter.language.register("vimdoc", "help")
+vim.treesitter.language.register("javascript", "strudel")
 
 vim.api.nvim_create_autocmd("FileType", {
   pattern = {
     "typescript", "typescriptreact", "javascript", "javascriptreact",
     "go", "python", "html", "css", "json", "yaml",
-    "lua", "vim", "help", "bash", "sh", "zsh", "markdown",
+    "lua", "vim", "help", "bash", "sh", "zsh", "markdown", "strudel",
   },
   callback = function() pcall(vim.treesitter.start) end,
 })

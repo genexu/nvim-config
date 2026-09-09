@@ -26,27 +26,27 @@ end
 local on_attach = function(client, bufnr)
 end
 
- local servers = {
-    gopls = {},
-    pyright = {
-      before_init = function(_, config)
-        config.settings.python.pythonPath = utils.get_python_path(config.root_dir)
-      end,
-      settings = {
-        python = {
-          analysis = {
-            autoSearchPaths = true,
-            useLibraryCodeForTypes = true,
-            diagnosticMode = 'workspace',
-          },
+local servers = {
+  gopls = {},
+  pyright = {
+    before_init = function(_, config)
+      config.settings.python.pythonPath = utils.get_python_path(config.root_dir)
+    end,
+    settings = {
+      python = {
+        analysis = {
+          autoSearchPaths = true,
+          useLibraryCodeForTypes = true,
+          diagnosticMode = 'workspace',
         },
       },
     },
-    ts_ls = {},
-    html = {},
-    cssls = {},
-    lua_ls = {}
- }
+  },
+  ts_ls = {},
+  html = {},
+  cssls = {},
+  lua_ls = {}
+}
 
 -- Set up each LSP server with the common capabilities and on_attach
 for server, config in pairs(servers) do
@@ -56,6 +56,26 @@ for server, config in pairs(servers) do
   vim.lsp.config(server, config)
   vim.lsp.enable(server)
 end
+
+-- Set up a custom LSP for Strudel files
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "strudel" },
+  callback = function()
+    vim.lsp.start({
+      name = "str-lsp",
+      cmd = { "node", "./str-ls/dist/server.js", "--stdio" },
+      root_dir = vim.fn.getcwd(),
+    })
+  end,
+})
+
+vim.filetype.add({
+  extension = {
+    strudel = "strudel",
+    str = "strudel",
+    std = "strudel",
+  },
+})
 
 -- Configure diagnostics display with deduplication
 vim.diagnostic.config({

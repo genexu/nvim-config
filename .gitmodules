@@ -1,0 +1,3 @@
+[submodule "lsp/str-ls"]
+	path = lsp/str-ls
+	url = https://github.com/marcoskichel/str-ls.git

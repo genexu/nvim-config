@@ -42,9 +42,16 @@ Or interactively within Neovim:
 - Leader key: `\`
 - FzfLua: `<leader>ff` (find files), `<leader>fg` (live grep), `<leader>fb` (buffers)
 - Buffer navigation: `<C-,>` (previous), `<C-.>` (next), `<C-p>` (pick)
-- File tree: `<C-e>` (toggle), `<leader>nf` (find file)
-- Diagnostics: `<leader>xx` (Trouble toggle), `<leader>e` (open float)
+- LSP: `gd` (definition), `<leader>ih` (toggle inlay hints)
 - Formatting: `<leader>p` (manual format with conform.nvim)
+
+## Strudel Live Coding & LSP
+
+Strudel support has two parts:
+- `strudel.nvim` plugin — browser playback/eval, keymaps `<leader>s*` (see README)
+- Custom `strudel` filetype mapped to the bundled `str-ls` language server (git submodule at `lsp/str-ls`)
+
+`lua/configs/lsp.lua` maps `.str`, `.std`, `.strudel` extensions to the `strudel` filetype and starts `str-ls` via `vim.lsp.start` on FileType. The server is built to `lsp/str-ls/dist/server.js`; build with `pnpm install --dir lsp/str-ls && pnpm --dir lsp/str-ls build`. When touching Strudel-adjacent config, check both `lua/configs/lsp.lua` (filetype + LSP attach) and `lua/configs/nvim-treesitter.lua` (`strudel` filetype is registered to the `javascript` parser).
 
 ## Common Development Patterns
 
@@ -77,6 +84,7 @@ Required external tools:
 - Language servers managed by Mason
 - Formatters: prettier/prettierd, black, stylua, shfmt, etc.
 - Linters: automatically installed via mason-nvim-lint (eslint_d, flake8, shellcheck, markdownlint, etc.)
+- Node >= 18 and pnpm - required to build the bundled `str-ls` language server (`lsp/str-ls` git submodule)
 
 ## Current Plugin List
 
@@ -114,6 +122,7 @@ Required external tools:
 - nvim-lint - Auto-linting with external tools
 - mason-nvim-lint - Auto-install linters through Mason
 - conform.nvim - Code formatting
+- strudel.nvim - Strudel live coding (browser playback/eval, `<leader>s*` keymaps)
 
 **Utilities:**
 - neoscroll.nvim - Smooth scrolling
