@@ -57,13 +57,15 @@ for server, config in pairs(servers) do
   vim.lsp.enable(server)
 end
 
--- Set up a custom LSP for Strudel files
+local filepath = vim.fn.resolve(debug.getinfo(1, "S").source:sub(2))
+local repo_root = vim.fs.root(filepath, "init.lua")
+local str_lsp_server = vim.fs.joinpath(repo_root, "lsp", "str-ls", "dist", "server.js")
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "strudel" },
   callback = function()
     vim.lsp.start({
       name = "str-lsp",
-      cmd = { "node", "./str-ls/dist/server.js", "--stdio" },
+      cmd = { "node", str_lsp_server, "--stdio" },
       root_dir = vim.fn.getcwd(),
     })
   end,
